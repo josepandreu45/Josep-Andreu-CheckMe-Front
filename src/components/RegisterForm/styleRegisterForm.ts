@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const RegisterFormContainer = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +15,7 @@ const RegisterFormContainer = styled.div`
     border-radius: 15px;
     height: 390px;
     width: 250px;
+    background-color: #f5f8fa;
   }
 
   label {
