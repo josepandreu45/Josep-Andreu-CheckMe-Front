@@ -13,7 +13,7 @@ const LoginFormContainer = styled.div`
     align-items: center;
     border: 2px solid #2b70e4;
     border-radius: 15px;
-    height: 390px;
+    height: 325px;
     width: 250px;
     background-color: #f5f8fa;
   }
