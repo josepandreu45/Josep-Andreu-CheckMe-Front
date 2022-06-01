@@ -1,10 +1,10 @@
 import React from "react";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginForm from "./components/LoginForm/LoginForm";
 
 function App() {
   return (
     <div className="App">
-      <RegisterPage />
+      <LoginForm />
     </div>
   );
 }

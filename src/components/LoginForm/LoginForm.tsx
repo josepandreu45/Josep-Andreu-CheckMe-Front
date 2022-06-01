@@ -1,23 +1,18 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import RegisterFormContainer from "./RegisterFormStyle";
-import { useAppDispatch } from "../../redux/hooks/hooks";
-import { registerThunk } from "../../redux/thunks/userThunks/userThunks";
+import { ChangeEvent, useState } from "react";
+import LoginFormContainer from "./LoginFormStyle";
 
 interface FormData {
-  name: string;
   username: string;
   password: string;
 }
 
-const RegisterForm = (): JSX.Element => {
+const LoginForm = (): JSX.Element => {
   const blankFields = {
-    name: "",
     username: "",
     password: "",
   };
 
   const [formData, setFormData] = useState<FormData>(blankFields);
-  const dispatch = useAppDispatch();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormData({
@@ -25,24 +20,9 @@ const RegisterForm = (): JSX.Element => {
       [event.target.id]: event.target.value,
     });
   };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    dispatch(registerThunk(formData));
-    setFormData(blankFields);
-  };
-
   return (
-    <RegisterFormContainer>
-      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          autoComplete="off"
-          value={formData.name}
-          onChange={handleInputChange}
-        />
+    <LoginFormContainer>
+      <form noValidate autoComplete="off">
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -60,11 +40,11 @@ const RegisterForm = (): JSX.Element => {
           onChange={handleInputChange}
         />
         <button type="submit" className="form-button">
-          CREATE ACCOUNT
+          LOGIN
         </button>
       </form>
-    </RegisterFormContainer>
+    </LoginFormContainer>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
