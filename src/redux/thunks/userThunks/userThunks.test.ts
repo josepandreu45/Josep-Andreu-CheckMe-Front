@@ -1,6 +1,5 @@
 import { mockUser, mockUserRegister } from "../../../mocks/mockUsers";
 import { server } from "../../../mocks/server";
-import { loginActionCreator } from "../../features/userSlice/userSlice";
 import { loginThunk, registerThunk } from "./userThunks";
 
 beforeEach(() => server.listen());
@@ -27,14 +26,8 @@ describe("Given a LoginThunk", () => {
   describe("When its called", () => {
     test("Then it should call the dispatch", async () => {
       const dispatch = jest.fn();
-      const userData = {
-        username: "jota",
-        password: "jota",
-      };
 
-      const loginAction = loginActionCreator(mockUser);
-
-      const thunk = loginThunk(userData);
+      const thunk = loginThunk(mockUser);
 
       await thunk(dispatch);
 
