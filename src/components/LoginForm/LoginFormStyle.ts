@@ -43,6 +43,11 @@ const LoginFormContainer = styled.div`
     cursor: pointer;
     width: 209px;
     margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  a {
+    text-decoration: none;
+    color: #2b70e4;
   }
 `;
 

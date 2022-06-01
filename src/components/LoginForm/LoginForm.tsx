@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { NavLink } from "react-router-dom";
 import LoginFormContainer from "./LoginFormStyle";
 
 interface FormData {
@@ -42,6 +43,7 @@ const LoginForm = (): JSX.Element => {
         <button type="submit" className="form-button">
           LOGIN
         </button>
+        <NavLink to="/register">Register</NavLink>
       </form>
     </LoginFormContainer>
   );

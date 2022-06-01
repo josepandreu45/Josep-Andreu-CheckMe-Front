@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import RegisterFormContainer from "./RegisterFormStyle";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks/userThunks";
+import { NavLink } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -62,6 +63,7 @@ const RegisterForm = (): JSX.Element => {
         <button type="submit" className="form-button">
           CREATE ACCOUNT
         </button>
+        <NavLink to="/login">Login</NavLink>
       </form>
     </RegisterFormContainer>
   );

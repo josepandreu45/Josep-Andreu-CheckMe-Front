@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import LoginForm from "./LoginForm";
 
@@ -12,7 +13,9 @@ describe("Given a LoginForm component", () => {
 
       render(
         <Provider store={store}>
-          <LoginForm />
+          <BrowserRouter>
+            <LoginForm />
+          </BrowserRouter>
         </Provider>
       );
 
