@@ -1,5 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks/hooks";
+import { loginThunk } from "../../redux/thunks/userThunks/userThunks";
 import LoginFormContainer from "./LoginFormStyle";
 
 interface FormData {
@@ -14,6 +16,7 @@ const LoginForm = (): JSX.Element => {
   };
 
   const [formData, setFormData] = useState<FormData>(blankFields);
+  const dispatch = useAppDispatch();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormData({
@@ -21,9 +24,18 @@ const LoginForm = (): JSX.Element => {
       [event.target.id]: event.target.value,
     });
   };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    if (formData.username === "" || formData.password === "") {
+      return;
+    }
+    dispatch(loginThunk(formData));
+    setFormData(blankFields);
+  };
   return (
     <LoginFormContainer>
-      <form noValidate autoComplete="off">
+      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
           type="text"

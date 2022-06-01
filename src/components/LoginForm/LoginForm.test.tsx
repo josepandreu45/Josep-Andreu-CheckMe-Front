@@ -25,4 +25,54 @@ describe("Given a LoginForm component", () => {
       expect(label).toHaveValue(inputText);
     });
   });
+  describe("When the two inputs have text and the submit button is clicked", () => {
+    test("Then the two inputs should be empty", () => {
+      const usernameLabel = "Username";
+      const passwordLabel = "Password";
+      const inputText = "hello";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <LoginForm />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const username = screen.getByLabelText(usernameLabel);
+      const password = screen.getByLabelText(passwordLabel);
+      const submitButton = screen.getByRole("button");
+
+      userEvent.type(username, inputText);
+      userEvent.type(password, inputText);
+      userEvent.click(submitButton);
+
+      expect(username).toHaveValue("");
+      expect(password).toHaveValue("");
+    });
+  });
+  describe("When the username is 'hello', the password input is empty and the submit is clicked", () => {
+    test("Then the username should be 'hello'", () => {
+      const usernameLabel = "Username";
+      const inputText = "hello";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <LoginForm />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const username = screen.getByLabelText(usernameLabel);
+
+      const submitButton = screen.getByRole("button");
+
+      userEvent.type(username, inputText);
+
+      userEvent.click(submitButton);
+
+      expect(username).toHaveValue(inputText);
+    });
+  });
 });
