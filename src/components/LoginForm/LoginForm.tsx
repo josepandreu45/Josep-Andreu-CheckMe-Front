@@ -27,10 +27,12 @@ const LoginForm = (): JSX.Element => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    if (formData.username === "" || formData.password === "") {
+      return;
+    }
     dispatch(loginThunk(formData));
     setFormData(blankFields);
   };
-
   return (
     <LoginFormContainer>
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
