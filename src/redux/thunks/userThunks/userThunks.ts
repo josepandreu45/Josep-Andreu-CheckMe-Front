@@ -1,6 +1,17 @@
 import axios from "axios";
-import { UserData, ResponseData } from "../../types/userTypes";
 import { AppDispatch } from "../../store/store";
+
+export interface UserData {
+  name: string;
+  username: string;
+  password: string;
+}
+
+export interface ResponseData {
+  name: string;
+  username: string;
+  password: string;
+}
 
 export const registerThunk =
   (userData: UserData) => async (dispatch: AppDispatch) => {
