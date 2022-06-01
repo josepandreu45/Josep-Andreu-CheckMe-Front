@@ -1,4 +1,4 @@
-import { logInActionCreator } from "./userSlice";
+import { loginActionCreator } from "./userSlice";
 import userReducer from "./userSlice";
 
 describe("Given a userSlice reducer", () => {
@@ -8,12 +8,12 @@ describe("Given a userSlice reducer", () => {
         name: "rocky",
         username: "rocky",
         logged: false,
-        id: "1",
+        id: "",
       };
 
       const initialValue = { name: "", username: "", id: "", logged: false };
 
-      const action = logInActionCreator(user);
+      const action = loginActionCreator(user);
       const receivedValue = userReducer(initialValue, action);
 
       expect(receivedValue.logged).toBe(true);
