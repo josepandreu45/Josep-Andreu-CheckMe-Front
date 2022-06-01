@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import RegisterFormContainer from "./styleRegisterForm";
+import RegisterFormContainer from "./RegisterFormContainerStyle";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks/userThunks";
 
