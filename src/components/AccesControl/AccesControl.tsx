@@ -18,7 +18,6 @@ export const AccesControlUnlogged = ({ children }: Children) => {
 
   if (logged) {
     return children;
-  } else {
-    return null;
   }
+  return null;
 };
