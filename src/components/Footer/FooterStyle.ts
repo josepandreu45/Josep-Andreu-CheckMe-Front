@@ -4,7 +4,6 @@ const FooterContainer = styled.footer`
   display: flex;
 
   background-color: #f5f8fa;
-  height: 60px;
 
   ul {
     width: 100vw;
@@ -13,6 +12,7 @@ const FooterContainer = styled.footer`
     justify-content: space-around;
     list-style: none;
     padding: 0;
+    margin: 0;
   }
 
   img {

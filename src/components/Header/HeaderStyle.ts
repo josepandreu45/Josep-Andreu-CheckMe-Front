@@ -6,6 +6,7 @@ const HeaderContainer = styled.header`
   align-items: flex-end;
   background-color: #2b70e4;
   min-width: 100%;
+  border-bottom: 1px solid #f5f8fa;
 
   nav {
     visibility: hidden;
