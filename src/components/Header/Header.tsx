@@ -3,11 +3,6 @@ import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import HeaderContainer from "./HeaderStyle";
 
-jest.mock("../../redux/hooks/hooks", () => ({
-  ...jest.requireActual("../../redux/hooks/hooks"),
-  useAppSelector: () => ({ name: "admin", id: "1234", logged: true }),
-}));
-
 const Header = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

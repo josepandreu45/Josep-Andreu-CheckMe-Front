@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import store from "./redux/store/store";
 
 jest.mock("jwt-decode", () => () => ({
   id: "1",
@@ -39,6 +40,24 @@ describe("Given an App component", () => {
       );
 
       expect(mockUseNavigate).toHaveBeenCalledWith("/home");
+    });
+  });
+
+  describe("When it's rendered and a user is not logged", () => {
+    test("Then it should render a text  'Register'", () => {
+      const expectedText = "Register";
+
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const expectedResult = screen.getByText(expectedText);
+
+      expect(expectedResult).toBeInTheDocument();
     });
   });
 });

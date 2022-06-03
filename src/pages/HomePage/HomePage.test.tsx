@@ -1,10 +1,16 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+
 import store from "../../redux/store/store";
 import HomePage from "./HomePage";
+
+const mockDispatch = jest.fn();
+
+jest.mock("../../redux/hooks/hooks", () => ({
+  useAppDispatch: () => mockDispatch,
+}));
 
 describe("Given a HomePage component", () => {
   describe("When its rendered", () => {
@@ -50,5 +56,21 @@ describe("Given a HomePage component", () => {
 
     const label = screen.getByRole(role, { name: text });
     expect(label).toBeInTheDocument();
+  });
+  describe("When the logout button is clicked", () => {
+    test("Then a logout action will be dispatched", () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <HomePage />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const button = screen.getByRole("button");
+      userEvent.click(button);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
   });
 });
