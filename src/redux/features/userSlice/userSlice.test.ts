@@ -1,4 +1,4 @@
-import { loginActionCreator } from "./userSlice";
+import { loginActionCreator, logoutActionCreator } from "./userSlice";
 import userReducer from "./userSlice";
 
 describe("Given a userSlice reducer", () => {
@@ -17,6 +17,24 @@ describe("Given a userSlice reducer", () => {
       const receivedValue = userReducer(initialValue, action);
 
       expect(receivedValue.logged).toBe(true);
+    });
+  });
+
+  describe("When it receives a logout action", () => {
+    test("Then it should return logged to false", () => {
+      const user = {
+        id: "1",
+        name: "hola",
+        username: "hola",
+        logged: true,
+      };
+
+      const expectedResult = false;
+
+      const logout = logoutActionCreator();
+      const userLoggout = userReducer(user, logout);
+
+      expect(userLoggout.logged).toEqual(expectedResult);
     });
   });
 });
