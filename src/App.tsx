@@ -1,22 +1,27 @@
+import jwtDecode from "jwt-decode";
 import React, { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { AccesControlUnlogged } from "./components/AccesControl/AccesControl";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import { useAppSelector } from "./redux/hooks/hooks";
+import { loginActionCreator } from "./redux/features/userSlice/userSlice";
+import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
+import { UserInfo } from "../src/types/userTypes";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (logged) {
+    const token = localStorage.getItem("token");
+    if (logged || token) {
+      const userInfo: UserInfo = jwtDecode(token as string);
+      dispatch(loginActionCreator(userInfo));
       navigate("/home");
-    } else {
-      navigate("/login");
     }
-  }, [navigate, logged]);
+  }, [dispatch, navigate, logged]);
 
   return (
     <>
