@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (logged || token) {
+    if (token || logged) {
       const userInfo: UserInfo = jwtDecode(token as string);
       dispatch(loginActionCreator(userInfo));
       navigate("/home");
