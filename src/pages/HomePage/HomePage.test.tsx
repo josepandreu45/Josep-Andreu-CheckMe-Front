@@ -1,16 +1,20 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
+import store from "../../redux/store/store";
 import HomePage from "./HomePage";
 
 describe("Given a HomePage component", () => {
   describe("When its rendered", () => {
     test("Then it should render an image", () => {
       render(
-        <BrowserRouter>
-          <HomePage />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <HomePage />
+          </BrowserRouter>
+        </Provider>
       );
       const receivedElement = screen.getByRole("main");
 
@@ -21,9 +25,11 @@ describe("Given a HomePage component", () => {
     const expectedLength = 3;
 
     render(
-      <BrowserRouter>
-        <Footer />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <HomePage />
+        </BrowserRouter>
+      </Provider>
     );
 
     const receivedResult = screen.getAllByRole("listitem");
@@ -35,9 +41,11 @@ describe("Given a HomePage component", () => {
     const role = "button";
 
     render(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <HomePage />
+        </BrowserRouter>
+      </Provider>
     );
 
     const label = screen.getByRole(role, { name: text });
