@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { UserInfo } from "../src/types/userTypes";
+import Page404 from "./pages/Page404/Page404";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
@@ -37,6 +38,7 @@ function App() {
             </AccesControlUnlogged>
           }
         />
+        <Route path="/*" element={<Page404 />} />
       </Routes>
     </>
   );
