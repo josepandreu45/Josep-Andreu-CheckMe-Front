@@ -9,6 +9,8 @@ import { loginActionCreator } from "./redux/features/userSlice/userSlice";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { UserInfo } from "../src/types/userTypes";
 import Page404 from "./pages/Page404/Page404";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
@@ -40,6 +42,18 @@ function App() {
         />
         <Route path="/*" element={<Page404 />} />
       </Routes>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }
