@@ -11,6 +11,7 @@ import { UserInfo } from "../src/types/userTypes";
 import Page404 from "./pages/Page404/Page404";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Check from "./components/Check/Check";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
