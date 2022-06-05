@@ -1,22 +1,25 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import listOfCheksMock from "../../mocks/mockChecks";
+
+import store from "../../redux/store/store";
 import Check from "./Check";
 
-describe("Given a Check component", () => {
-  describe("When its rendered", () => {
-    test("Then it should show a heading", () => {
+describe("Given the Check component", () => {
+  describe("When it's invoked", () => {
+    test("Then it should render one heading element", () => {
       render(
-        <Check
-          title="horno apagado"
-          times={3}
-          image={
-            "https://easelectric.es/8750-large_default/horno-8-funciones.jpg"
-          }
-        />
+        <Provider store={store}>
+          <BrowserRouter>
+            <Check check={listOfCheksMock[0]} />
+          </BrowserRouter>
+        </Provider>
       );
 
-      const receivedResult = screen.getByRole("heading");
+      const result = screen.getByRole("heading");
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(result).toBeInTheDocument();
     });
   });
 });

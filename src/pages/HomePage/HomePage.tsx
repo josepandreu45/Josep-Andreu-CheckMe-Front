@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ChecksList from "../../components/ChecksList/ChecksList";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 
@@ -52,6 +53,7 @@ const HomePage = (): JSX.Element => {
       <Header />
       <main>
         <img className="add" src="/images/add-desktop.png" alt="add icon" />
+        <ChecksList />
       </main>
 
       <Footer />

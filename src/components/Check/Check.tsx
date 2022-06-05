@@ -1,13 +1,11 @@
+import { IcheckSimple } from "../../types/checkTypes";
 import CheckContainer from "./CheckStyle";
 
 interface Props {
-  title: string;
-  times: number;
-
-  image: string;
+  check: IcheckSimple;
 }
 
-const Check = ({ title, times, image }: Props): JSX.Element => {
+const Check = ({ check: { title, image, times } }: Props): JSX.Element => {
   return (
     <CheckContainer>
       <img src={image} alt="thing to check" />
