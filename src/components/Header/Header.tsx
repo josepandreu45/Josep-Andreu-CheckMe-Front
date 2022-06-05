@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { correctAction } from "../../modals/modals";
 import { logoutActionCreator } from "../../redux/features/userSlice/userSlice";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import HeaderContainer from "./HeaderStyle";
@@ -11,6 +12,7 @@ const Header = (): JSX.Element => {
     localStorage.removeItem("token");
     dispatch(logoutActionCreator());
     navigate("/login");
+    correctAction("logged out");
   };
 
   return (
