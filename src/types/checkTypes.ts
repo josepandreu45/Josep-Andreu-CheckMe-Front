@@ -5,3 +5,9 @@ export interface ICheck {
   image: string;
   date: Date;
 }
+
+export interface IcheckSimple {
+  title: string;
+  times: number;
+  image: string;
+}
