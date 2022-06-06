@@ -13,6 +13,7 @@ const HeaderContainer = styled.header`
 
   nav {
     visibility: hidden;
+    width: 50px;
     left: 50px;
     display: flex;
     flex: 2;

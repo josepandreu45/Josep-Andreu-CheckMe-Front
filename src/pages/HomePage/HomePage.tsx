@@ -33,7 +33,7 @@ const HomePageContainer = styled.div`
     justify-content: space-between;
     main {
       background-color: #2b70e4;
-      height: 100%;
+      height: 100vw;
       width: 100%;
       display: flex;
       align-items: flex-end;
