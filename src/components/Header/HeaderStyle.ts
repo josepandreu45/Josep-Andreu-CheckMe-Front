@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
+  position: sticky;
+  top: 0px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   background-color: #2b70e4;
   min-width: 100%;
+  height: 125px;
   border-bottom: 1px solid #f5f8fa;
 
   nav {

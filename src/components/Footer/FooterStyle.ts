@@ -2,11 +2,13 @@ import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   display: flex;
-
+  position: sticky;
+  bottom: -3px;
   background-color: #f5f8fa;
 
   ul {
     width: 100vw;
+
     display: flex;
     align-items: center;
     justify-content: space-around;

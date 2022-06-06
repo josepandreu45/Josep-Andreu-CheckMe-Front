@@ -14,8 +14,9 @@ const HomePageContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    justify-content: end;
+    align-items: start;
+    justify-content: start;
+    padding-bottom: 50px;
   }
   .add {
     visibility: hidden;
@@ -38,13 +39,6 @@ const HomePageContainer = styled.div`
       align-items: flex-end;
       justify-content: end;
     }
-    .add {
-      visibility: visible;
-      height: 60px;
-      width: 60px;
-      margin-right: 70px;
-      margin-bottom: 50px;
-    }
   }
 `;
 
@@ -54,7 +48,6 @@ const HomePage = (): JSX.Element => {
       <Header />
       <main>
         <ChecksList />
-        <img className="add" src="/images/add-desktop.png" alt="add icon" />
       </main>
 
       <Footer />
