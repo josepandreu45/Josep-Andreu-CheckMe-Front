@@ -1,3 +1,4 @@
+import { FormEvent } from "react";
 import { IcheckSimple } from "../../types/checkTypes";
 import CheckContainer from "./CheckStyle";
 
@@ -6,6 +7,10 @@ interface Props {
 }
 
 const Check = ({ check: { title, image, times } }: Props): JSX.Element => {
+  const handleOnChange = (event: FormEvent<HTMLInputElement>): void => {
+    event.preventDefault();
+  };
+
   return (
     <CheckContainer>
       <img src={image} alt="thing to check" />
@@ -15,10 +20,10 @@ const Check = ({ check: { title, image, times } }: Props): JSX.Element => {
         <input
           min={0}
           max={10}
-          placeholder=""
           type="number"
           id="times"
           value={times}
+          onChange={handleOnChange}
         />
       </section>
       <section className="delete">
