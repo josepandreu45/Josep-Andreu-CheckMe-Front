@@ -1,4 +1,5 @@
 export interface ICheck {
+  id: string;
   title: string;
   times: number;
   checked: boolean;

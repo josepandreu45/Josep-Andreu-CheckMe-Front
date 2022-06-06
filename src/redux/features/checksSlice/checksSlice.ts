@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ICheck } from "../../../types/checkTypes";
 
 interface ChecksState {
-  checks: ICheck[];
+  allChecks: ICheck[];
 }
 
 const initialState: ChecksState = {
-  checks: [],
+  allChecks: [],
 };
 
 const checkSlice = createSlice({
@@ -14,11 +14,19 @@ const checkSlice = createSlice({
   initialState,
   reducers: {
     loadChecks: (checks, action): ChecksState => ({
-      checks: [...action.payload],
+      allChecks: [...action.payload],
+    }),
+    deleteCheck: (checks, action): ChecksState => ({
+      allChecks: checks.allChecks.filter(
+        (check: ICheck) => check.id !== action.payload
+      ),
     }),
   },
 });
 
-export const { loadChecks: loadChecksActionCreator } = checkSlice.actions;
+export const {
+  loadChecks: loadChecksActionCreator,
+  deleteCheck: deleteCheckActionCreator,
+} = checkSlice.actions;
 
 export default checkSlice.reducer;
