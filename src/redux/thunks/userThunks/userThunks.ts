@@ -12,9 +12,9 @@ export const registerThunk =
         `${process.env.REACT_APP_API_URL}users/register`,
         userData
       );
-      correctAction("user created");
+      correctAction("USER CREATED");
     } catch {
-      wrongAction("this username is used");
+      wrongAction("THIS USERNAME IS USED");
     }
   };
 
@@ -30,8 +30,8 @@ export const loginThunk =
       localStorage.setItem("token", data.token);
 
       dispatch(loginActionCreator(userInfo));
-      correctAction("logged");
+      correctAction("LOGGED");
     } catch {
-      wrongAction("wrong username or password");
+      wrongAction("WRONG USERNAME OR PASSWORD");
     }
   };

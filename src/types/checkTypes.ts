@@ -11,4 +11,5 @@ export interface IcheckSimple {
   title: string;
   times: number;
   image: string;
+  id: string;
 }
