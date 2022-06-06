@@ -24,6 +24,9 @@ const checkSlice = createSlice({
   },
 });
 
-export const { loadChecks: loadChecksActionCreator } = checkSlice.actions;
+export const {
+  loadChecks: loadChecksActionCreator,
+  deleteCheck: deleteCheckActionCreator,
+} = checkSlice.actions;
 
 export default checkSlice.reducer;
