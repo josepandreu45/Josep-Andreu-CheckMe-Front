@@ -1,4 +1,6 @@
 import { FormEvent } from "react";
+import { useAppDispatch } from "../../redux/hooks/hooks";
+import { deleteCheckThunk } from "../../redux/thunks/checkThunks/checkThunks";
 import { IcheckSimple } from "../../types/checkTypes";
 import CheckContainer from "./CheckStyle";
 
@@ -6,9 +8,15 @@ interface Props {
   check: IcheckSimple;
 }
 
-const Check = ({ check: { title, image, times } }: Props): JSX.Element => {
+const Check = ({ check: { title, image, times, id } }: Props): JSX.Element => {
   const handleOnChange = (event: FormEvent<HTMLInputElement>): void => {
     event.preventDefault();
+  };
+
+  const dispatch = useAppDispatch();
+
+  const handleDelete = (): void => {
+    dispatch(deleteCheckThunk(id));
   };
 
   return (
@@ -27,7 +35,7 @@ const Check = ({ check: { title, image, times } }: Props): JSX.Element => {
         />
       </section>
       <section className="delete">
-        <button>
+        <button onClick={handleDelete}>
           <img src="images/delete.png" alt="delete icon" />
         </button>
       </section>
