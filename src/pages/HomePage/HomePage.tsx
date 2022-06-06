@@ -13,6 +13,7 @@ const HomePageContainer = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: flex-end;
     justify-content: end;
   }
@@ -52,8 +53,8 @@ const HomePage = (): JSX.Element => {
     <HomePageContainer>
       <Header />
       <main>
-        <img className="add" src="/images/add-desktop.png" alt="add icon" />
         <ChecksList />
+        <img className="add" src="/images/add-desktop.png" alt="add icon" />
       </main>
 
       <Footer />

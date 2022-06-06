@@ -5,7 +5,7 @@ const CheckContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: 350px;
-  height: 125px;
+  height: 140px;
   border: 3px solid #2b70e4;
   border-radius: 15px;
   overflow: hidden;

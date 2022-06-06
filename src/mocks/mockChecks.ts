@@ -1,4 +1,4 @@
-const listOfCheksMock = [
+const mockListChecks = [
   {
     title: "horno apagado",
     times: 3,
@@ -13,4 +13,4 @@ const listOfCheksMock = [
   },
 ];
 
-export default listOfCheksMock;
+export default mockListChecks;

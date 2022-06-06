@@ -2,12 +2,15 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import mockListChecks from "../../mocks/mockChecks";
 import store from "../../redux/store/store";
 import Header from "./Header";
 
 const mockDispatch = jest.fn();
 
 jest.mock("../../redux/hooks/hooks", () => ({
+  ...jest.requireActual("../../redux/hooks/hooks"),
+  useAppSelector: () => mockListChecks,
   useAppDispatch: () => mockDispatch,
 }));
 

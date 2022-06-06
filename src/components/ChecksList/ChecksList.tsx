@@ -4,7 +4,16 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadChecksThunk } from "../../redux/thunks/checkThunks/checkThunks";
 import Check from "../Check/Check";
 
-const ChecksListContainer = styled.div``;
+const ChecksListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding-top: 15px;
+  gap: 10px;
+`;
 
 const ChecksList = (): JSX.Element => {
   const dispatch = useAppDispatch();
