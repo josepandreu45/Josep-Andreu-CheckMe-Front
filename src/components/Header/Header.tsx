@@ -9,7 +9,6 @@ const Header = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const logout = () => {
-    debugger;
     localStorage.removeItem("token");
     dispatch(logoutActionCreator());
     navigate("/login");
@@ -17,7 +16,6 @@ const Header = (): JSX.Element => {
   };
 
   const userInfo = useAppSelector((state) => state.user);
-  debugger;
   return (
     <HeaderContainer>
       <img className="logo" src="images/CheckMe.png" alt="check logo" />
