@@ -1,10 +1,18 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import mockListChecks from "../../mocks/mockChecks";
 
 import store from "../../redux/store/store";
 import Check from "./Check";
+
+const mockDispatch = jest.fn();
+
+jest.mock("../../redux/hooks/hooks", () => ({
+  ...jest.requireActual("../../redux/hooks/hooks"),
+  useAppDispatch: () => mockDispatch,
+}));
 
 describe("Given the Check component", () => {
   describe("When it's invoked", () => {
@@ -20,6 +28,22 @@ describe("Given the Check component", () => {
       const result = screen.getByRole("heading");
 
       expect(result).toBeInTheDocument();
+    });
+  });
+  describe("when its clicked the button", () => {
+    test("then it should call dispatch", () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Check check={mockListChecks[0]} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const buttons = screen.getAllByRole("button");
+      userEvent.click(buttons[2]);
+
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });
