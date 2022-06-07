@@ -12,7 +12,7 @@ const Header = (): JSX.Element => {
     localStorage.removeItem("token");
     dispatch(logoutActionCreator());
     navigate("/login");
-    correctAction("logged out");
+    correctAction("LOGGED OUT");
   };
 
   const userInfo = useAppSelector((state) => state.user);
