@@ -44,6 +44,7 @@ const CreateForm = (): JSX.Element => {
         />
         <label htmlFor="times">Times</label>
         <input
+          className="times"
           type="number"
           id="times"
           autoComplete="off"

@@ -6,6 +6,8 @@ const CreateFormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 15px;
+  background-color: #2b70e4;
 
   form {
     display: flex;
@@ -31,6 +33,10 @@ const CreateFormContainer = styled.div`
     margin-top: 15px;
     width: 202px;
     border: 1px solid #2b70e4;
+  }
+
+  .times {
+    text-align: center;
   }
 
   .form-button {
