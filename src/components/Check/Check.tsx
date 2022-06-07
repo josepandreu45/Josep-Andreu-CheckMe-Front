@@ -16,7 +16,14 @@ const Check = ({ check: { title, image, times, id } }: Props): JSX.Element => {
 
   return (
     <CheckContainer>
-      <img src={image} alt="thing to check" />
+      <img
+        src={
+          image.split("/")[0] !== "images"
+            ? image
+            : `${process.env.REACT_APP_API_URL}${image}`
+        }
+        alt="thing to check"
+      />
       <section className="info">
         <h2>{title}</h2>
         <span>Times checked:</span>

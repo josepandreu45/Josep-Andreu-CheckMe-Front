@@ -14,6 +14,7 @@ const ChecksListContainer = styled.div`
   width: 100%;
   padding-top: 15px;
   gap: 10px;
+
   @media (min-width: 600px) {
     display: flex;
     flex-wrap: wrap;
