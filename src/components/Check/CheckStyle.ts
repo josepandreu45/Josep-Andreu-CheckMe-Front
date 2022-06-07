@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const CheckContainer = styled.div`
-  width: 200px;
   display: flex;
   justify-content: space-around;
   width: 350px;
@@ -35,6 +34,7 @@ const CheckContainer = styled.div`
 
   .info {
     display: flex;
+
     flex-direction: column;
     justify-content: center;
     text-align: center;
@@ -43,7 +43,7 @@ const CheckContainer = styled.div`
   }
   .delete {
     height: 100%;
-
+    width: 75px;
     display: flex;
     justify-content: end;
     align-items: flex-start;
