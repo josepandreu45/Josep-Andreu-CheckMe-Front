@@ -11,7 +11,9 @@ const Footer = (): JSX.Element => {
           </NavLink>
         </li>
         <li>
-          <img src="/images/add.png" alt="add icon" />
+          <NavLink to={"/add"}>
+            <img src="/images/add.png" alt="add icon" />
+          </NavLink>
         </li>
         <li>
           <img src="/images/calendar.png" alt="calendar icon" />
