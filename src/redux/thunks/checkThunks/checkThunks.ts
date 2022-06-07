@@ -1,5 +1,9 @@
 import axios from "axios";
-import { correctAction } from "../../../modals/modals";
+import {
+  correctAction,
+  setLoadingOn,
+  setLoadingOff,
+} from "../../../modals/modals";
 import {
   deleteCheckActionCreator,
   loadChecksActionCreator,
@@ -8,8 +12,8 @@ import { AppDispatch } from "../../store/store";
 
 export const loadChecksThunk = () => async (dispatch: AppDispatch) => {
   const token = localStorage.getItem("token");
-
   if (token) {
+    setLoadingOn("LOADING...");
     const {
       data: { checks },
     } = await axios.get(`${process.env.REACT_APP_API_URL}checks`, {
@@ -19,6 +23,7 @@ export const loadChecksThunk = () => async (dispatch: AppDispatch) => {
     });
 
     dispatch(loadChecksActionCreator(checks));
+    setLoadingOff();
   }
 };
 
