@@ -13,7 +13,7 @@ const CreateFormContainer = styled.div`
     align-items: center;
     border: 2px solid #2b70e4;
     border-radius: 15px;
-    height: 390px;
+    height: 500px;
     width: 250px;
     background-color: #f5f8fa;
   }
@@ -44,6 +44,12 @@ const CreateFormContainer = styled.div`
     width: 209px;
     margin-top: 25px;
     margin-bottom: 25px;
+  }
+  .description {
+    height: 100px;
+  }
+  .image {
+    border: none;
   }
 `;
 

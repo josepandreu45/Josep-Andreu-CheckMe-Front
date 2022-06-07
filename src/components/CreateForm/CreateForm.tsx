@@ -42,20 +42,21 @@ const CreateForm = (): JSX.Element => {
           value={formData.title}
           onChange={handleInputChange}
         />
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          id="description"
-          autoComplete="off"
-          value={formData.description}
-          onChange={handleInputChange}
-        />
         <label htmlFor="times">Times</label>
         <input
           type="number"
           id="times"
           autoComplete="off"
           value={formData.times}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="description">Description</label>
+        <input
+          className="description"
+          type="text"
+          id="description"
+          autoComplete="off"
+          value={formData.description}
           onChange={handleInputChange}
         />
         <label htmlFor="image">Image</label>
