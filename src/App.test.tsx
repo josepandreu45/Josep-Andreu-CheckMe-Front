@@ -21,7 +21,7 @@ jest.mock("react-router-dom", () => ({
 describe("Given an App component", () => {
   describe("When it's rendered and a user is not logged", () => {
     test("Then it should render a text  'Register'", () => {
-      const expectedText = "Register";
+      const expectedText = "Username";
 
       render(
         <Provider store={store}>

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import mockListChecks from "../../mocks/mockChecks";
+import mockListChecks from "../../mocks/mockListChecks";
 
 import store from "../../redux/store/store";
 import Check from "./Check";

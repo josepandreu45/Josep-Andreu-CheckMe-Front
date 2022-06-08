@@ -1,34 +1,54 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks/hooks";
+import { createCheckThunk } from "../../redux/thunks/checkThunks/checkThunks";
+import { INewCheck } from "../../types/checkTypes";
+
 import CreateFormContainer from "./CreateFormStyle";
 
-interface FormData {
-  title: string;
-  times: number;
-  description: string;
-  image: string;
-}
-
 const CreateForm = (): JSX.Element => {
-  const blankFields = {
+  const blankFields: INewCheck = {
     title: "",
     times: 1,
     description: "",
     image: "",
+    id: "",
   };
 
-  const [formData, setFormData] = useState<FormData>(blankFields);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const [formData, setFormData] = useState(blankFields);
+
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setFormData({
       ...formData,
       [event.target.id]: event.target.value,
     });
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
 
+    const newCheck = new FormData();
+
+    newCheck.append("title", formData.title);
+    newCheck.append("times", JSON.stringify(formData.times));
+    newCheck.append("description", formData.description);
+    newCheck.append("image", formData.image);
+
+    dispatch(createCheckThunk(newCheck));
     setFormData(blankFields);
+    navigate("/home");
+  };
+
+  const uploadImage = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setFormData({
+      ...formData,
+      [event.target.id]: event.target.files?.[0] || "",
+    });
   };
 
   return (
@@ -63,11 +83,9 @@ const CreateForm = (): JSX.Element => {
         <label htmlFor="image">Image</label>
         <input
           className="image"
-          placeholder="image"
           id="image"
           type="file"
-          value={formData.image}
-          onChange={handleInputChange}
+          onChange={uploadImage}
           autoComplete="off"
         />
         <button type="submit" className="form-button">
