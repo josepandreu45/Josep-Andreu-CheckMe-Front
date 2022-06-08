@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { AccesControlUnlogged } from "./AccesControl";
+import { AccesControlUnlogged } from "./AccesControlUnlogged";
 
 const mockUseNavigate = jest.fn();
 

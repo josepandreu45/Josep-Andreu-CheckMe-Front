@@ -14,3 +14,10 @@ export interface UserRegister {
   username: string;
   password: string;
 }
+
+export interface UserState {
+  name: string;
+  username: string;
+  id: string;
+  logged: boolean;
+}

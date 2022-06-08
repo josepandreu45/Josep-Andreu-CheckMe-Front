@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import mockListChecks from "../../mocks/mockChecks";
+import mockListChecks from "../../mocks/mockListChecks";
 import ChecksList from "./ChecksList";
 
 describe("Given a ChecksList component", () => {
@@ -10,7 +10,7 @@ describe("Given a ChecksList component", () => {
     test("Then it should render the titles of the two'", async () => {
       const checksMockSlice = createSlice({
         name: "checks",
-        initialState: { allChecks: mockListChecks },
+        initialState: mockListChecks,
         reducers: {},
       });
       const mockStore = configureStore({

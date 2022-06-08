@@ -1,20 +1,17 @@
-import mockListChecks from "../../../mocks/mockChecks";
+import mockListChecks from "../../../mocks/mockListChecks";
 import {
   deleteCheckActionCreator,
   loadChecksActionCreator,
 } from "./checksSlice";
 import checkReducer from "../checksSlice/checksSlice";
+import { ICheck } from "../../../types/checkTypes";
 
-const initialState = {
-  allChecks: [],
-};
+const initialState: ICheck[] = [];
 
 describe("Given the loadChecks function", () => {
   describe("When its invoked", () => {
     test("Then the initial state will contain the loaded checks", () => {
-      const expectedState = {
-        allChecks: mockListChecks,
-      };
+      const expectedState = mockListChecks;
 
       const action = loadChecksActionCreator(mockListChecks);
       const newState = checkReducer(initialState, action);
@@ -27,22 +24,19 @@ describe("Given the loadChecks function", () => {
 describe("Given the deleteCheck function", () => {
   describe("When invoked with an id to delete", () => {
     test("Then the item will be deleted from the propierties list", () => {
-      const initialState = {
-        allChecks: mockListChecks,
-      };
+      const initialState: ICheck[] = mockListChecks;
 
-      const expectedState = {
-        allChecks: [
-          {
-            id: mockListChecks[1].id,
-            title: mockListChecks[1].title,
-            checked: mockListChecks[1].checked,
-            date: mockListChecks[1].date,
-            times: mockListChecks[1].times,
-            image: mockListChecks[1].image,
-          },
-        ],
-      };
+      const expectedState = [
+        {
+          id: mockListChecks[1].id,
+          title: mockListChecks[1].title,
+          checked: mockListChecks[1].checked,
+          date: mockListChecks[1].date,
+          times: mockListChecks[1].times,
+          image: mockListChecks[1].image,
+          description: mockListChecks[1].description,
+        },
+      ];
 
       const id = "1";
 

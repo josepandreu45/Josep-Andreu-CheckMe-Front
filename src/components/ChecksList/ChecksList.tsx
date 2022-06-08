@@ -35,12 +35,10 @@ const ChecksList = (): JSX.Element => {
     dispatch(loadChecksThunk());
   }, [dispatch]);
 
-  const allChecks: IcheckSimple[] = useAppSelector(
-    (state) => state.checks.allChecks
-  );
+  const Allchecks: IcheckSimple[] = useAppSelector((state) => state.checks);
   return (
     <ChecksListContainer>
-      {allChecks.map((check, index) => {
+      {Allchecks.map((check, index) => {
         return <Check key={index} check={check} />;
       })}
     </ChecksListContainer>

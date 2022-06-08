@@ -4,7 +4,9 @@ import {
   setLoadingOn,
   setLoadingOff,
 } from "../../../modals/modals";
+
 import {
+  createCheckActionCreator,
   deleteCheckActionCreator,
   loadChecksActionCreator,
 } from "../../features/checksSlice/checksSlice";
@@ -44,4 +46,20 @@ export const deleteCheckThunk =
       dispatch(deleteCheckActionCreator(id));
       correctAction("CHECK DELETED");
     }
+  };
+
+export const createCheckThunk =
+  (formData: any) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+    const {
+      data: { newCheck },
+    } = await axios.post(`${process.env.REACT_APP_API_URL}checks`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "mutipart/form-data",
+      },
+    });
+
+    dispatch(createCheckActionCreator(newCheck));
+    correctAction("NEW CHECK CREATED");
   };

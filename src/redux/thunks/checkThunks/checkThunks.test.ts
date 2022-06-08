@@ -4,7 +4,7 @@ import {
   deleteCheckActionCreator,
   loadChecksActionCreator,
 } from "../../features/checksSlice/checksSlice";
-import mockListChecks from "../../../mocks/mockChecks";
+import mockListChecks from "../../../mocks/mockListChecks";
 import axios from "axios";
 
 beforeEach(() => server.listen());
