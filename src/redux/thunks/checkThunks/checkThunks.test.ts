@@ -1,10 +1,17 @@
-import { deleteCheckThunk, loadChecksThunk } from "./checkThunks";
+import {
+  createCheckThunk,
+  deleteCheckThunk,
+  loadChecksThunk,
+} from "./checkThunks";
 import { server } from "../../../mocks/server";
 import {
   deleteCheckActionCreator,
   loadChecksActionCreator,
 } from "../../features/checksSlice/checksSlice";
-import mockListChecks from "../../../mocks/mockListChecks";
+import {
+  mockListChecks,
+  mockListCheckCreate,
+} from "../../../mocks/mockListChecks";
 import axios from "axios";
 
 beforeEach(() => server.listen());
@@ -59,6 +66,25 @@ describe("Given the deleteCheckThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a createCheckThunk", () => {
+  describe("When its called", () => {
+    test("then it should dispatch createCheckActionCreator", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.post = jest.fn().mockResolvedValue({
+        data: { newCheck: { mockListCheckCreate } },
+        status: 201,
+      });
+
+      const thunk = createCheckThunk(mockListCheckCreate);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });

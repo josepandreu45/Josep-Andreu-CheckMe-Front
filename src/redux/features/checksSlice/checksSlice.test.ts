@@ -1,5 +1,6 @@
-import mockListChecks from "../../../mocks/mockListChecks";
+import { mockListChecks } from "../../../mocks/mockListChecks";
 import {
+  createCheckActionCreator,
   deleteCheckActionCreator,
   loadChecksActionCreator,
 } from "./checksSlice";
@@ -30,7 +31,6 @@ describe("Given the deleteCheck function", () => {
         {
           id: mockListChecks[1].id,
           title: mockListChecks[1].title,
-          checked: mockListChecks[1].checked,
           date: mockListChecks[1].date,
           times: mockListChecks[1].times,
           image: mockListChecks[1].image,
@@ -41,6 +41,22 @@ describe("Given the deleteCheck function", () => {
       const id = "1";
 
       const action = deleteCheckActionCreator(id);
+      const newState = checkReducer(initialState, action);
+
+      expect(newState).toEqual(expectedState);
+    });
+  });
+});
+
+describe("Given the createCheck function", () => {
+  describe("When its invoked", () => {
+    test("Then the item will be create the check", () => {
+      const initialState: ICheck[] = [mockListChecks[0]];
+      const payLoad = mockListChecks[1];
+
+      const expectedState = mockListChecks;
+
+      const action = createCheckActionCreator(payLoad);
       const newState = checkReducer(initialState, action);
 
       expect(newState).toEqual(expectedState);
