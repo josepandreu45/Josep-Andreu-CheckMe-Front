@@ -10,7 +10,7 @@ const HomePageContainer = styled.div`
   justify-content: space-between;
   main {
     background-color: #2b70e4;
-    height: 100%;
+    min-height: calc(100vh - 70px);
     width: 100%;
     display: flex;
     flex-direction: column;
