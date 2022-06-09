@@ -29,12 +29,15 @@ describe("Given the deleteCheck function", () => {
 
       const expectedState = [
         {
+          username: mockListChecks[1].username,
           id: mockListChecks[1].id,
           title: mockListChecks[1].title,
           date: mockListChecks[1].date,
           times: mockListChecks[1].times,
           image: mockListChecks[1].image,
           description: mockListChecks[1].description,
+          imageBackup: mockListChecks[1].imageBackup,
+          owner: mockListChecks[1].owner,
         },
       ];
 

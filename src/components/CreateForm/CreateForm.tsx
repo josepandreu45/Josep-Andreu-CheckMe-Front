@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { createCheckThunk } from "../../redux/thunks/checkThunks/checkThunks";
 import { INewCheck } from "../../types/checkTypes";
 
 import CreateFormContainer from "./CreateFormStyle";
 
 const CreateForm = (): JSX.Element => {
+  const { username } = useAppSelector((state) => state.user);
+
   const blankFields: INewCheck = {
     title: "",
     times: 1,
     description: "",
     image: "",
+    imageBackup: "",
+    owner: username,
     id: "",
   };
 
@@ -38,9 +42,11 @@ const CreateForm = (): JSX.Element => {
     newCheck.append("times", JSON.stringify(formData.times));
     newCheck.append("description", formData.description);
     newCheck.append("image", formData.image);
+    newCheck.append("owner", formData.owner);
 
     dispatch(createCheckThunk(newCheck));
     setFormData(blankFields);
+
     navigate("/home");
   };
 

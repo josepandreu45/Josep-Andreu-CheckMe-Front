@@ -59,7 +59,6 @@ export const createCheckThunk =
         "Content-Type": "mutipart/form-data",
       },
     });
-
     dispatch(createCheckActionCreator(newCheck));
     correctAction("NEW CHECK CREATED");
   };
