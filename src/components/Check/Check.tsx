@@ -7,7 +7,9 @@ interface Props {
   check: IcheckSimple;
 }
 
-const Check = ({ check: { title, image, times, id } }: Props): JSX.Element => {
+const Check = ({
+  check: { title, image, times, id, imageBackup },
+}: Props): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const handleDelete = (): void => {
@@ -16,14 +18,7 @@ const Check = ({ check: { title, image, times, id } }: Props): JSX.Element => {
 
   return (
     <CheckContainer>
-      <img
-        src={
-          image.split("/")[0] !== "images"
-            ? image
-            : `${process.env.REACT_APP_API_URL}${image}`
-        }
-        alt="thing to check"
-      />
+      <img src={image ? imageBackup : ""} alt="thing to check" />
       <section className="info">
         <h2>{title}</h2>
         <span>Times checked:</span>
