@@ -1,12 +1,12 @@
 export interface ICheck {
-  id: string;
+  id?: string;
   title: string;
   times: number;
   image: string;
   imageBackup: string;
-  date?: Date;
+  date?: string;
   description: string;
-  owner: string;
+  owner?: string;
 }
 
 export interface IcheckSimple {
@@ -14,11 +14,12 @@ export interface IcheckSimple {
   times: number;
   image: string;
   imageBackup: string;
-  owner: string;
-  id: string;
+  owner?: string;
+  id?: string;
 }
 
 export interface INewCheck {
+  date?: string;
   title: string;
   times: number;
   image: string;
@@ -26,4 +27,8 @@ export interface INewCheck {
   imageBackup: string;
   id: string;
   owner: string;
+}
+
+export interface IDetail {
+  check: ICheck;
 }

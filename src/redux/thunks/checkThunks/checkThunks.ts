@@ -10,6 +10,7 @@ import {
   deleteCheckActionCreator,
   loadChecksActionCreator,
 } from "../../features/checksSlice/checksSlice";
+import { loadOneCheckActionCreator } from "../../features/oneCheckSlice/oneCheckSlice";
 import { AppDispatch } from "../../store/store";
 
 export const loadChecksThunk = () => async (dispatch: AppDispatch) => {
@@ -61,4 +62,22 @@ export const createCheckThunk =
     });
     dispatch(createCheckActionCreator(newCheck));
     correctAction("NEW CHECK CREATED");
+  };
+
+export const getOneCheckThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const { data: check } = await axios.get(
+        `${process.env.REACT_APP_API_URL}checks/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(loadOneCheckActionCreator(check));
+    }
   };
