@@ -1,9 +1,16 @@
+import { useEffect } from "react";
+
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import ChecksList from "../../components/ChecksList/ChecksList";
+import CheckDetail from "../../components/CheckDetail/CheckDetail";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 
-const HomePageContainer = styled.div`
+import { useAppDispatch } from "../../redux/hooks/hooks";
+
+import { getOneCheckThunk } from "../../redux/thunks/checkThunks/checkThunks";
+
+const DetailPageContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -13,9 +20,7 @@ const HomePageContainer = styled.div`
     min-height: calc(100vh - 70px);
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
+    justify-content: center;
     padding-bottom: 50px;
   }
   .add {
@@ -27,36 +32,41 @@ const HomePageContainer = styled.div`
   }
 
   @media (min-width: 600px) {
-    height: 100%;
-    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #2b70e4;
     main {
       background-color: #2b70e4;
-      height: 100%;
+      height: 100vw;
       width: 100%;
       display: flex;
-
-      align-items: flex-end;
-      justify-content: end;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
   }
 `;
 
-const HomePage = (): JSX.Element => {
+const DetailPage = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const { idCheck } = useParams();
+
+  useEffect(() => {
+    if (idCheck) {
+      dispatch(getOneCheckThunk(idCheck));
+    }
+  }, [dispatch, idCheck]);
+
   return (
-    <HomePageContainer>
+    <DetailPageContainer>
       <Header />
       <main>
-        <ChecksList />
+        <CheckDetail />
       </main>
 
       <Footer />
-    </HomePageContainer>
+    </DetailPageContainer>
   );
 };
 
-export default HomePage;
+export default DetailPage;

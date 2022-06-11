@@ -21,7 +21,7 @@ const Header = (): JSX.Element => {
       <img className="logo" src="images/CheckMe.png" alt="check logo" />
       <nav>
         <NavLink to={"/home"}>HOME</NavLink>
-        <NavLink to={"/new"}>NEW CHECK</NavLink>
+        <NavLink to={"/add"}>NEW CHECK</NavLink>
         <NavLink to={"/calendar"}>CALENDAR</NavLink>
       </nav>
       <section className="user">

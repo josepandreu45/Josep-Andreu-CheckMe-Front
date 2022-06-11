@@ -17,6 +17,7 @@ const CreateForm = (): JSX.Element => {
     imageBackup: "",
     owner: username,
     id: "",
+    date: "",
   };
 
   const dispatch = useAppDispatch();
