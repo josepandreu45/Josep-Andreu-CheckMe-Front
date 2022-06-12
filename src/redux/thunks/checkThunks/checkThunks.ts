@@ -4,10 +4,12 @@ import {
   setLoadingOn,
   setLoadingOff,
 } from "../../../modals/modals";
+import { ICheck } from "../../../types/checkTypes";
 
 import {
   createCheckActionCreator,
   deleteCheckActionCreator,
+  editCheckActionCreator,
   loadChecksActionCreator,
 } from "../../features/checksSlice/checksSlice";
 import { loadOneCheckActionCreator } from "../../features/oneCheckSlice/oneCheckSlice";
@@ -79,5 +81,25 @@ export const getOneCheckThunk =
       );
 
       dispatch(loadOneCheckActionCreator(check));
+    }
+  };
+
+export const editCheckThunk =
+  (idToEdit: string, formData: ICheck) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const { data: check } = await axios.put(
+        `${process.env.REACT_APP_API_URL}checks/${idToEdit}`,
+        formData,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(editCheckActionCreator(check));
+      correctAction("Check Updated");
     }
   };

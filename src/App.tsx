@@ -14,6 +14,7 @@ import CreatePage from "./pages/CreatePage/CreatePage";
 import AccesControlLogged from "./components/AccesControl/AccesControlLogged";
 import { useEffect } from "react";
 import DetailPage from "./pages/DetailPage/DetailPage";
+import EditPage from "./pages/EditPage/EditPage";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
@@ -63,7 +64,22 @@ function App() {
             </AccesControlUnlogged>
           }
         />
-        <Route path="/detail/:idCheck" element={<DetailPage />} />
+        <Route
+          path="/edit/:idCheck"
+          element={
+            <AccesControlUnlogged>
+              <EditPage />
+            </AccesControlUnlogged>
+          }
+        />
+        <Route
+          path="/detail/:idCheck"
+          element={
+            <AccesControlUnlogged>
+              <DetailPage />
+            </AccesControlUnlogged>
+          }
+        />
         <Route path="/*" element={<Page404 />} />
       </Routes>
       <ToastContainer

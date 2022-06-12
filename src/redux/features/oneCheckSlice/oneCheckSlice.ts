@@ -18,7 +18,7 @@ const oneCheckSlice = createSlice({
   name: "check",
   initialState,
   reducers: {
-    loadOneCheck: (check, action) => ({
+    loadOneCheck: (check, action): IDetail => ({
       check: { ...action.payload },
     }),
   },

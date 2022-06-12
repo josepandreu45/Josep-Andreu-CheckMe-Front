@@ -63,7 +63,6 @@ const DetailPage = (): JSX.Element => {
       <main>
         <CheckDetail />
       </main>
-
       <Footer />
     </DetailPageContainer>
   );

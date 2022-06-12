@@ -1,6 +1,7 @@
 import {
   createCheckThunk,
   deleteCheckThunk,
+  getOneCheckThunk,
   loadChecksThunk,
 } from "./checkThunks";
 import { server } from "../../../mocks/server";
@@ -13,6 +14,7 @@ import {
   mockListCheckCreate,
 } from "../../../mocks/mockListChecks";
 import axios from "axios";
+import { loadOneCheckActionCreator } from "../../features/oneCheckSlice/oneCheckSlice";
 
 beforeEach(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -85,6 +87,26 @@ describe("Given a createCheckThunk", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a loadOneCheckThunk", () => {
+  describe("When its called", () => {
+    test("then it should dispatch loadOneCheckActionCreator", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: mockListChecks[0], status: 200 });
+
+      const action = loadOneCheckActionCreator(mockListChecks[0]);
+      const thunk = getOneCheckThunk(mockListChecks[0].id);
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
 });
