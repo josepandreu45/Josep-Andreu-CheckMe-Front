@@ -16,6 +16,10 @@ const checkSlice = createSlice({
       ...checks,
       action.payload,
     ],
+    editCheck: (checks, action: PayloadAction<INewCheck>) =>
+      checks.map((check) =>
+        check.id === action.payload.id ? action.payload : check
+      ),
   },
 });
 
@@ -23,6 +27,7 @@ export const {
   loadChecks: loadChecksActionCreator,
   deleteCheck: deleteCheckActionCreator,
   createCheck: createCheckActionCreator,
+  editCheck: editCheckActionCreator,
 } = checkSlice.actions;
 
 export default checkSlice.reducer;

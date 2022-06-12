@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/hooks";
 
 import CheckDetailContainer from "./CheckDetailStyle";
 
 const CheckDetail = (): JSX.Element => {
   const { check } = useAppSelector((state) => state.check);
+  const navigate = useNavigate();
+
+  const editCheck = () => {
+    navigate(`/edit/${check.id}`);
+  };
 
   return (
     <CheckDetailContainer>
@@ -18,6 +24,7 @@ const CheckDetail = (): JSX.Element => {
         <span>Description:</span>
         <p> {check.description} </p>
       </section>
+      <button onClick={editCheck}>Edit</button>
     </CheckDetailContainer>
   );
 };

@@ -25,7 +25,7 @@ export interface INewCheck {
   image: string;
   description: string;
   imageBackup: string;
-  id: string;
+  id?: string;
   owner: string;
 }
 

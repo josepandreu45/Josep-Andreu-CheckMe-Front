@@ -1,27 +1,30 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import { createCheckThunk } from "../../redux/thunks/checkThunks/checkThunks";
-import { INewCheck } from "../../types/checkTypes";
+import {
+  createCheckThunk,
+  editCheckThunk,
+} from "../../redux/thunks/checkThunks/checkThunks";
 
 import CreateFormContainer from "./CreateFormStyle";
 
 const CreateForm = (): JSX.Element => {
-  const { username } = useAppSelector((state) => state.user);
-
-  const blankFields: INewCheck = {
-    title: "",
-    times: 1,
-    description: "",
-    image: "",
-    imageBackup: "",
-    owner: username,
-    id: "",
-    date: "",
-  };
-
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { idCheck } = useParams();
+  const dispatch = useAppDispatch();
+  const { checks } = useAppSelector((state) => state);
+  const checkToEdit = checks.find((check) => check.id === idCheck);
+
+  const blankFields = {
+    title: checkToEdit ? checkToEdit.title : "",
+    times: checkToEdit ? checkToEdit.times : 1,
+    description: checkToEdit ? checkToEdit.description : "",
+    image: checkToEdit ? checkToEdit.image : "",
+    imageBackup: checkToEdit ? checkToEdit.imageBackup : "",
+    id: checkToEdit ? checkToEdit.id : "",
+    date: checkToEdit ? checkToEdit.date : "",
+  };
 
   const [formData, setFormData] = useState(blankFields);
 
@@ -43,9 +46,11 @@ const CreateForm = (): JSX.Element => {
     newCheck.append("times", JSON.stringify(formData.times));
     newCheck.append("description", formData.description);
     newCheck.append("image", formData.image);
-    newCheck.append("owner", formData.owner);
 
-    dispatch(createCheckThunk(newCheck));
+    formData.id
+      ? dispatch(editCheckThunk(formData.id, formData))
+      : dispatch(createCheckThunk(newCheck));
+
     setFormData(blankFields);
 
     navigate("/home");
@@ -96,7 +101,7 @@ const CreateForm = (): JSX.Element => {
           autoComplete="off"
         />
         <button type="submit" className="form-button">
-          CREATE CHECK
+          {location.pathname === "/add" ? "CREATE CHECK" : "EDIT CHECK"}
         </button>
       </form>
     </CreateFormContainer>

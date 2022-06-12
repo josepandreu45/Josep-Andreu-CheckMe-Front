@@ -14,6 +14,7 @@ import CreatePage from "./pages/CreatePage/CreatePage";
 import AccesControlLogged from "./components/AccesControl/AccesControlLogged";
 import { useEffect } from "react";
 import DetailPage from "./pages/DetailPage/DetailPage";
+import EditPage from "./pages/EditPage/EditPage";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
@@ -60,6 +61,14 @@ function App() {
           element={
             <AccesControlUnlogged>
               <CreatePage />
+            </AccesControlUnlogged>
+          }
+        />
+        <Route
+          path="/edit/:idCheck"
+          element={
+            <AccesControlUnlogged>
+              <EditPage />
             </AccesControlUnlogged>
           }
         />
