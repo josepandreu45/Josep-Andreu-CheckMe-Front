@@ -72,7 +72,14 @@ function App() {
             </AccesControlUnlogged>
           }
         />
-        <Route path="/detail/:idCheck" element={<DetailPage />} />
+        <Route
+          path="/detail/:idCheck"
+          element={
+            <AccesControlUnlogged>
+              <DetailPage />
+            </AccesControlUnlogged>
+          }
+        />
         <Route path="/*" element={<Page404 />} />
       </Routes>
       <ToastContainer

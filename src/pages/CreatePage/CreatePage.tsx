@@ -13,10 +13,11 @@ const CreatePageContainer = styled.div`
 const CreatePage = (): JSX.Element => {
   return (
     <>
-      <CreatePageContainer />
-      <Header />
-      <CreateForm />
-      <Footer />
+      <CreatePageContainer>
+        <Header />
+        <CreateForm />
+        <Footer />
+      </CreatePageContainer>
     </>
   );
 };
