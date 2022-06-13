@@ -6,7 +6,6 @@ const CheckDetailContainer = styled.div`
   justify-content: space-around;
   width: 300px;
   height: 100%;
-  border: 3px solid #2b70e4;
   border-radius: 15px;
   overflow: hidden;
   background-color: #f5f8fa;
@@ -46,15 +45,17 @@ const CheckDetailContainer = styled.div`
     align-items: center;
     gap: 15px;
   }
+  .edit img {
+    height: 30px;
+    width: 30px;
+  }
 
   @media (min-width: 600px) {
-    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 400px;
-    height: 500px;
-    border: 3px solid #2b70e4;
+    width: 350px;
+    height: 100%;
     border-radius: 15px;
     overflow: hidden;
     background-color: #f5f8fa;
@@ -75,7 +76,7 @@ const CheckDetailContainer = styled.div`
       cursor: pointer;
       border: none;
       background: none;
-      padding: 0;
+      padding: 15px;
 
       img {
         width: 35px;
@@ -90,8 +91,9 @@ const CheckDetailContainer = styled.div`
       text-align: center;
       align-items: center;
       gap: 15px;
+      flex: 2;
     }
-  } ;
+  }
 `;
 
 export default CheckDetailContainer;

@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadChecksThunk } from "../../redux/thunks/checkThunks/checkThunks";
 import { ICheck } from "../../types/checkTypes";
 import Check from "../Check/Check";
+import NewCheck from "../NewCheck/NewCheck";
 import ChecksListContainer from "./CheckListStyle";
 
 const ChecksList = (): JSX.Element => {
@@ -28,32 +29,42 @@ const ChecksList = (): JSX.Element => {
     setCurrentPage(Allchecks.slice(index, index + 5));
   }, [index, Allchecks]);
 
+  if (Allchecks.length === 0) {
+    return (
+      <ChecksListContainer>
+        <NewCheck />
+      </ChecksListContainer>
+    );
+  }
+
   return (
-    <ChecksListContainer>
-      {currentPage.map((check, index) => {
-        return <Check key={index} check={check} />;
-      })}
-      <section className="page">
-        <button
-          onClick={() => {
-            if (index >= 5) {
-              setIndex(index - 5);
-            }
-          }}
-        >
-          Previous
-        </button>
-        <button
-          onClick={() => {
-            if (index < Allchecks.length - 5) {
-              setIndex(index + 5);
-            }
-          }}
-        >
-          Next
-        </button>
-      </section>
-    </ChecksListContainer>
+    <>
+      <ChecksListContainer>
+        {currentPage.map((check, index) => {
+          return <Check key={index} check={check} />;
+        })}
+        <section className="page">
+          <button
+            onClick={() => {
+              if (index >= 5) {
+                setIndex(index - 5);
+              }
+            }}
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => {
+              if (index < Allchecks.length - 5) {
+                setIndex(index + 5);
+              }
+            }}
+          >
+            Next
+          </button>
+        </section>
+      </ChecksListContainer>
+    </>
   );
 };
 

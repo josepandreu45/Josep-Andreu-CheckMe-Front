@@ -14,8 +14,9 @@ const CheckDetail = (): JSX.Element => {
   return (
     <CheckDetailContainer>
       <img src={check.image ? check.imageBackup : ""} alt="thing to check" />
-      <span>{check.date}</span>
+
       <section className="info">
+        <span>{check.date}</span>
         <h2>{check.title}</h2>
         <span>Times checked:</span>
         <section className="times">
@@ -23,8 +24,10 @@ const CheckDetail = (): JSX.Element => {
         </section>
         <span>Description:</span>
         <p> {check.description} </p>
+        <button className="edit" onClick={editCheck}>
+          <img src="/images/edit.png" alt="edit button" />
+        </button>
       </section>
-      <button onClick={editCheck}>Edit</button>
     </CheckDetailContainer>
   );
 };
