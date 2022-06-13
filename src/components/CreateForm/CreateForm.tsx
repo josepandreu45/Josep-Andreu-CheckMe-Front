@@ -14,6 +14,7 @@ const CreateForm = (): JSX.Element => {
   const { idCheck } = useParams();
   const dispatch = useAppDispatch();
   const { checks } = useAppSelector((state) => state);
+  const { username } = useAppSelector((state) => state.user);
   const checkToEdit = checks.find((check) => check.id === idCheck);
 
   const blankFields = {
@@ -24,6 +25,7 @@ const CreateForm = (): JSX.Element => {
     imageBackup: checkToEdit ? checkToEdit.imageBackup : "",
     id: checkToEdit ? checkToEdit.id : "",
     date: checkToEdit ? checkToEdit.date : "",
+    owner: username,
   };
 
   const [formData, setFormData] = useState(blankFields);
@@ -46,6 +48,7 @@ const CreateForm = (): JSX.Element => {
     newCheck.append("times", JSON.stringify(formData.times));
     newCheck.append("description", formData.description);
     newCheck.append("image", formData.image);
+    newCheck.append("owner", formData.owner);
 
     formData.id
       ? dispatch(editCheckThunk(formData.id, formData))
