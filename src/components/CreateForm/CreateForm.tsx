@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import {
@@ -29,7 +29,7 @@ const CreateForm = (): JSX.Element => {
   const [formData, setFormData] = useState(blankFields);
 
   const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ): void => {
     setFormData({
       ...formData,
@@ -84,13 +84,11 @@ const CreateForm = (): JSX.Element => {
           onChange={handleInputChange}
         />
         <label htmlFor="description">Description</label>
-        <input
-          className="description"
-          type="text"
+        <textarea
           id="description"
-          autoComplete="off"
           value={formData.description}
           onChange={handleInputChange}
+          autoComplete="off"
         />
         <label htmlFor="image">Image</label>
         <input
