@@ -37,7 +37,7 @@ describe("Given the Check component", () => {
       expect(result).toBeInTheDocument();
     });
   });
-  describe("when its clicked the button", () => {
+  describe("when its clicked the button with x", () => {
     test("then it should call dispatch", () => {
       render(
         <Provider store={store}>
@@ -67,6 +67,38 @@ describe("Given the Check component", () => {
       userEvent.click(buttons[3]);
 
       expect(mockNavigate).toHaveBeenCalled();
+    });
+  });
+  describe("when its clicked the button +", () => {
+    test("then it should call dispatch", () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Check check={mockListChecks[0]} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const buttons = screen.getAllByRole("button");
+      userEvent.click(buttons[0]);
+
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
+  describe("when its clicked the button -", () => {
+    test("then it should call dispatch", () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Check check={mockListChecks[0]} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const buttons = screen.getAllByRole("button");
+      userEvent.click(buttons[1]);
+
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });

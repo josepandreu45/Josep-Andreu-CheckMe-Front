@@ -17,8 +17,8 @@ import { AppDispatch } from "../../store/store";
 
 export const loadChecksThunk = () => async (dispatch: AppDispatch) => {
   const token = localStorage.getItem("token");
+
   if (token) {
-    setLoadingOn("LOADING...");
     const {
       data: { checks },
     } = await axios.get(`${process.env.REACT_APP_API_URL}checks`, {
@@ -26,6 +26,7 @@ export const loadChecksThunk = () => async (dispatch: AppDispatch) => {
         Authorization: `Bearer ${token}`,
       },
     });
+    setLoadingOn("LOADING...");
 
     dispatch(loadChecksActionCreator(checks));
     setLoadingOff();
@@ -85,9 +86,9 @@ export const getOneCheckThunk =
   };
 
 export const editCheckThunk =
-  (idToEdit: string, formData: ICheck) => async (dispatch: AppDispatch) => {
+  (idToEdit: string, formData: ICheck | number) =>
+  async (dispatch: AppDispatch) => {
     const token = localStorage.getItem("token");
-
     if (token) {
       const { data: check } = await axios.put(
         `${process.env.REACT_APP_API_URL}checks/${idToEdit}`,

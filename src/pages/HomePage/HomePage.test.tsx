@@ -6,8 +6,8 @@ import HomePage from "./HomePage";
 
 describe("Given a HomePage Component", () => {
   describe("When it's invoked", () => {
-    test("Then it should render a button with the text logout'", () => {
-      const expectedResult = "Logout";
+    test("Then it should render a list with 3 items'", () => {
+      const expectedResult = 3;
 
       render(
         <Provider store={store}>
@@ -17,9 +17,9 @@ describe("Given a HomePage Component", () => {
         </Provider>
       );
 
-      const receivedResult = screen.getByText(expectedResult);
+      const receivedResult = screen.getAllByRole("listitem");
 
-      expect(receivedResult).toBeInTheDocument();
+      expect(receivedResult).toHaveLength(expectedResult);
     });
   });
 });

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import ChecksList from "../../components/ChecksList/ChecksList";
 import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 
 const HomePageContainer = styled.div`
   height: 100%;
@@ -49,7 +48,6 @@ const HomePageContainer = styled.div`
 const HomePage = (): JSX.Element => {
   return (
     <HomePageContainer>
-      <Header />
       <main>
         <ChecksList />
       </main>

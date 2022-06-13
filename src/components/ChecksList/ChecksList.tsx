@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadChecksThunk } from "../../redux/thunks/checkThunks/checkThunks";
-import { IcheckSimple } from "../../types/checkTypes";
+import { ICheck } from "../../types/checkTypes";
 import Check from "../Check/Check";
 
 const ChecksListContainer = styled.div`
@@ -35,7 +35,7 @@ const ChecksList = (): JSX.Element => {
     dispatch(loadChecksThunk());
   }, [dispatch]);
 
-  const Allchecks: IcheckSimple[] = useAppSelector((state) => state.checks);
+  const Allchecks: ICheck[] = useAppSelector((state) => state.checks);
   return (
     <ChecksListContainer>
       {Allchecks.map((check, index) => {

@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import CheckDetail from "../../components/CheckDetail/CheckDetail";
 import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 
 import { useAppDispatch } from "../../redux/hooks/hooks";
 
@@ -59,7 +58,6 @@ const DetailPage = (): JSX.Element => {
 
   return (
     <DetailPageContainer>
-      <Header />
       <main>
         <CheckDetail />
       </main>

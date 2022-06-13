@@ -1,27 +1,54 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks/hooks";
-import { deleteCheckThunk } from "../../redux/thunks/checkThunks/checkThunks";
-import { IcheckSimple } from "../../types/checkTypes";
+import {
+  deleteCheckThunk,
+  editCheckThunk,
+} from "../../redux/thunks/checkThunks/checkThunks";
+import { ICheck } from "../../types/checkTypes";
 import CheckContainer from "./CheckStyle";
 
 interface Props {
-  check: IcheckSimple;
+  check: ICheck;
 }
 
 const Check = ({
-  check: { title, image, times, id, imageBackup },
+  check: { title, image, times, id: checkId, imageBackup, description, date },
 }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const stateFields = {
+    title: title,
+    times: times,
+    description: description,
+    image: image,
+    imageBackup: imageBackup,
+    id: checkId,
+    date: date,
+  };
+
   const handleDelete = (): void => {
-    if (id) {
-      dispatch(deleteCheckThunk(id));
+    if (checkId) {
+      dispatch(deleteCheckThunk(checkId));
     }
   };
 
   const goToDetails = (): void => {
-    navigate(`/detail/${id}`);
+    navigate(`/detail/${checkId}`);
+  };
+
+  const incrementTimes = (): void => {
+    if (checkId) {
+      stateFields.times++;
+      dispatch(editCheckThunk(checkId, stateFields));
+    }
+  };
+
+  const decrementTimes = (): void => {
+    if (checkId && stateFields.times >= 2) {
+      stateFields.times--;
+      dispatch(editCheckThunk(checkId, stateFields));
+    }
   };
 
   return (
@@ -31,9 +58,9 @@ const Check = ({
         <h2>{title}</h2>
         <span>Times checked:</span>
         <section className="times">
-          <button>-</button>
+          <button onClick={decrementTimes}>-</button>
           <span>{times}</span>
-          <button>+</button>
+          <button onClick={incrementTimes}>+</button>
         </section>
       </section>
       <section className="actions">

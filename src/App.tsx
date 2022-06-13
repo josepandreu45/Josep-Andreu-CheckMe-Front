@@ -15,6 +15,7 @@ import AccesControlLogged from "./components/AccesControl/AccesControlLogged";
 import { useEffect } from "react";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import EditPage from "./pages/EditPage/EditPage";
+import Header from "./components/Header/Header";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
@@ -48,43 +49,60 @@ function App() {
             </AccesControlLogged>
           }
         />
+
         <Route
           path="/home"
           element={
-            <AccesControlUnlogged>
-              <HomePage />
-            </AccesControlUnlogged>
+            <>
+              <Header />
+              <AccesControlUnlogged>
+                <HomePage />
+              </AccesControlUnlogged>
+            </>
           }
         />
+
         <Route
           path="/add"
           element={
-            <AccesControlUnlogged>
-              <CreatePage />
-            </AccesControlUnlogged>
+            <>
+              <Header />
+              <AccesControlUnlogged>
+                <CreatePage />
+              </AccesControlUnlogged>
+            </>
           }
         />
+
         <Route
           path="/edit/:idCheck"
           element={
-            <AccesControlUnlogged>
-              <EditPage />
-            </AccesControlUnlogged>
+            <>
+              <Header />
+              <AccesControlUnlogged>
+                <EditPage />
+              </AccesControlUnlogged>
+            </>
           }
         />
+
         <Route
           path="/detail/:idCheck"
           element={
-            <AccesControlUnlogged>
-              <DetailPage />
-            </AccesControlUnlogged>
+            <>
+              <Header />
+              <AccesControlUnlogged>
+                <DetailPage />
+              </AccesControlUnlogged>
+            </>
           }
         />
+
         <Route path="/*" element={<Page404 />} />
       </Routes>
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={1000}
         hideProgressBar={true}
         newestOnTop={false}
         closeOnClick

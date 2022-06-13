@@ -15,7 +15,7 @@ const CreateFormContainer = styled.div`
     align-items: center;
     border: 2px solid #2b70e4;
     border-radius: 15px;
-    height: 500px;
+    height: 455px;
     width: 250px;
     background-color: #f5f8fa;
   }
@@ -30,6 +30,12 @@ const CreateFormContainer = styled.div`
 
   input {
     height: 30px;
+    margin-top: 15px;
+    width: 202px;
+    border: 1px solid #2b70e4;
+  }
+  textarea {
+    height: 50px;
     margin-top: 15px;
     width: 202px;
     border: 1px solid #2b70e4;
