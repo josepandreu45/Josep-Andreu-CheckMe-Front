@@ -5,7 +5,6 @@ const CheckContainer = styled.div`
   justify-content: space-between;
   width: 350px;
   height: 150px;
-  border: 3px solid #2b70e4;
   border-radius: 15px;
   overflow: hidden;
   background-color: #f5f8fa;
@@ -83,7 +82,6 @@ const CheckContainer = styled.div`
     justify-content: center;
     width: 300px;
     height: 500px;
-    border: 3px solid #2b70e4;
     border-radius: 15px;
     overflow: hidden;
     background-color: #f5f8fa;
