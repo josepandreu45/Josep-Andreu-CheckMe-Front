@@ -76,7 +76,6 @@ const CheckContainer = styled.div`
   }
 
   @media (min-width: 600px) {
-    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;

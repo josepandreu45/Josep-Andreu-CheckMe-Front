@@ -7,8 +7,6 @@ import DetailPage from "./DetailPage";
 describe("Given a DetailPage Component", () => {
   describe("When it's invoked", () => {
     test("Then it should render a button with the text Edit'", () => {
-      const expectedResult = "Edit";
-
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -17,7 +15,7 @@ describe("Given a DetailPage Component", () => {
         </Provider>
       );
 
-      const receivedResult = screen.getByText(expectedResult);
+      const receivedResult = screen.getByRole("button");
 
       expect(receivedResult).toBeInTheDocument();
     });

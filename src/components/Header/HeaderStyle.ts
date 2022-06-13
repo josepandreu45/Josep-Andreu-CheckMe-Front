@@ -60,14 +60,15 @@ const HeaderContainer = styled.header`
       visibility: visible;
       display: flex;
       flex: 2;
-      justify-content: space-evenly;
+      justify-content: space-around;
       align-items: flex-end;
       margin-bottom: 15px;
+      margin-left: 70px;
     }
     .logo {
       display: flex;
       margin-top: 20px;
-      margin-left: 75px;
+      margin-left: 50px;
       height: 96.32px;
       width: 75px;
       margin-bottom: 15px;
@@ -91,7 +92,7 @@ const HeaderContainer = styled.header`
       flex-direction: row;
       align-items: center;
       align-content: center;
-      margin-right: 75px;
+      margin-right: 20px;
       gap: 15px;
       margin-bottom: 15px;
     }

@@ -27,7 +27,7 @@ const HomePageContainer = styled.div`
 
   @media (min-width: 600px) {
     height: 100%;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,8 +38,8 @@ const HomePageContainer = styled.div`
       width: 100%;
       display: flex;
 
-      align-items: flex-end;
-      justify-content: end;
+      align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
     }
   }
