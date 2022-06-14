@@ -53,7 +53,10 @@ const Check = ({
 
   return (
     <CheckContainer>
-      <img src={image ? imageBackup : ""} alt="thing to check" />
+      <img
+        src={image ? imageBackup : "/images/default-placeholder.png"}
+        alt="thing to check"
+      />
       <section className="info">
         <h2>{title}</h2>
         <span>Times checked:</span>
