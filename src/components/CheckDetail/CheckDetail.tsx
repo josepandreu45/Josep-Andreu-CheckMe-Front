@@ -8,6 +8,10 @@ const CheckDetail = (): JSX.Element => {
   const navigate = useNavigate();
 
   const editCheck = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
     navigate(`/edit/${check.id}`);
   };
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const CreateFormContainer = styled.div`
   width: 100%;
   height: 580px;
-  margin-top: -50px;
+  margin-top: -75px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +17,7 @@ const CreateFormContainer = styled.div`
     align-items: center;
     border: 2px solid #2b70e4;
     border-radius: 15px;
-    height: 455px;
+    height: 375px;
     width: 250px;
     background-color: #f5f8fa;
   }

@@ -35,6 +35,11 @@ const Check = ({
 
   const goToDetails = (): void => {
     navigate(`/detail/${checkId}`);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
   };
 
   const incrementTimes = (): void => {

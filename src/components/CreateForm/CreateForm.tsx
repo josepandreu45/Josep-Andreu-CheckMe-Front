@@ -59,6 +59,10 @@ const CreateForm = (): JSX.Element => {
     setFormData(blankFields);
 
     navigate("/home");
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
   };
 
   const uploadImage = (event: React.ChangeEvent<HTMLInputElement>): void => {

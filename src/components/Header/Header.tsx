@@ -15,14 +15,27 @@ const Header = (): JSX.Element => {
     correctAction("LOGGED OUT");
   };
 
+  const toTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  };
+
   const userInfo = useAppSelector((state) => state.user);
   return (
     <HeaderContainer>
       <img className="logo" src="images/CheckMe.png" alt="check logo" />
       <nav>
-        <NavLink to={"/home"}>HOME</NavLink>
-        <NavLink to={"/add"}>NEW CHECK</NavLink>
-        <NavLink to={"/search"}>CALENDAR</NavLink>
+        <NavLink to={"/home"} onClick={toTop}>
+          HOME
+        </NavLink>
+        <NavLink to={"/add"} onClick={toTop}>
+          NEW CHECK
+        </NavLink>
+        <NavLink to={"/search"} onClick={toTop}>
+          CALENDAR
+        </NavLink>
       </nav>
       <section className="user">
         <span>Hi {userInfo.username}</span>
