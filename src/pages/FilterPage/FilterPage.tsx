@@ -50,7 +50,6 @@ const FilterPage = (): JSX.Element => {
 
   const filter = () => {
     setChecks(checks.filter((check) => check.date === formDate.calendarDate));
-    console.log(checks);
     return checks;
   };
 
@@ -59,9 +58,7 @@ const FilterPage = (): JSX.Element => {
       ...formDate,
       [event.target.id]: event.target.value,
     });
-    console.log(event.target.value);
   };
-  console.log(setFormDate);
 
   return (
     <>
