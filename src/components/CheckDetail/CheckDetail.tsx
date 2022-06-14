@@ -13,7 +13,12 @@ const CheckDetail = (): JSX.Element => {
 
   return (
     <CheckDetailContainer>
-      <img src={check.image ? check.imageBackup : ""} alt="thing to check" />
+      <img
+        src={
+          check.image ? check.imageBackup : "/images/default-placeholder.png"
+        }
+        alt="thing to check"
+      />
 
       <section className="info">
         <span>{check.date}</span>

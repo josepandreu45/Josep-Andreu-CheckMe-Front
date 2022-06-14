@@ -48,6 +48,10 @@ const ChecksList = (): JSX.Element => {
             onClick={() => {
               if (index >= 5) {
                 setIndex(index - 5);
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
               }
             }}
           >
@@ -57,6 +61,10 @@ const ChecksList = (): JSX.Element => {
             onClick={() => {
               if (index < Allchecks.length - 5) {
                 setIndex(index + 5);
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
               }
             }}
           >

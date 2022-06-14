@@ -20,6 +20,9 @@ const checkSlice = createSlice({
       checks.map((check) =>
         check.id === action.payload.id ? action.payload : check
       ),
+
+    searchCheck: (checks, action: PayloadAction<ICheck[]>): ICheck[] =>
+      action.payload,
   },
 });
 
@@ -28,6 +31,7 @@ export const {
   deleteCheck: deleteCheckActionCreator,
   createCheck: createCheckActionCreator,
   editCheck: editCheckActionCreator,
+  searchCheck: searchCheckActionCreator,
 } = checkSlice.actions;
 
 export default checkSlice.reducer;
