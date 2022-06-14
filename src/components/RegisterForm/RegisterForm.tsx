@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import RegisterFormContainer from "./RegisterFormStyle";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks/userThunks";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -19,6 +19,7 @@ const RegisterForm = (): JSX.Element => {
 
   const [formData, setFormData] = useState<FormData>(blankFields);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setFormData({
@@ -31,6 +32,7 @@ const RegisterForm = (): JSX.Element => {
     event.preventDefault();
     dispatch(registerThunk(formData));
     setFormData(blankFields);
+    navigate("/login");
   };
 
   return (

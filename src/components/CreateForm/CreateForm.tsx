@@ -59,6 +59,10 @@ const CreateForm = (): JSX.Element => {
     setFormData(blankFields);
 
     navigate("/home");
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
   };
 
   const uploadImage = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -79,15 +83,7 @@ const CreateForm = (): JSX.Element => {
           value={formData.title}
           onChange={handleInputChange}
         />
-        <label htmlFor="times">Times</label>
-        <input
-          className="times"
-          type="number"
-          id="times"
-          autoComplete="off"
-          value={formData.times}
-          onChange={handleInputChange}
-        />
+
         <label htmlFor="description">Description</label>
         <textarea
           id="description"
