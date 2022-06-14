@@ -24,7 +24,9 @@ const CreateForm = (): JSX.Element => {
     image: checkToEdit ? checkToEdit.image : "",
     imageBackup: checkToEdit ? checkToEdit.imageBackup : "",
     id: checkToEdit ? checkToEdit.id : "",
-    date: checkToEdit ? checkToEdit.date : "",
+    date: checkToEdit
+      ? checkToEdit.date
+      : new Date().toISOString().split("T")[0],
     owner: username,
   };
 

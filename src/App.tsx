@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import EditPage from "./pages/EditPage/EditPage";
 import Header from "./components/Header/Header";
+import FilterPage from "./pages/FilterPage/FilterPage";
 
 function App() {
   const { logged } = useAppSelector((state) => state.user);
@@ -93,6 +94,17 @@ function App() {
               <Header />
               <AccesControlUnlogged>
                 <DetailPage />
+              </AccesControlUnlogged>
+            </>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <>
+              <Header />
+              <AccesControlUnlogged>
+                <FilterPage />
               </AccesControlUnlogged>
             </>
           }

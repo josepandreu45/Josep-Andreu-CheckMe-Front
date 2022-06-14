@@ -22,7 +22,7 @@ const Header = (): JSX.Element => {
       <nav>
         <NavLink to={"/home"}>HOME</NavLink>
         <NavLink to={"/add"}>NEW CHECK</NavLink>
-        <NavLink to={"/calendar"}>CALENDAR</NavLink>
+        <NavLink to={"/search"}>CALENDAR</NavLink>
       </nav>
       <section className="user">
         <span>Hi {userInfo.username}</span>
