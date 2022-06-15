@@ -2,10 +2,11 @@ import { mockListChecks } from "../../../mocks/mockListChecks";
 import {
   createCheckActionCreator,
   deleteCheckActionCreator,
+  editCheckActionCreator,
   loadChecksActionCreator,
 } from "./checksSlice";
-import checkReducer from "../checksSlice/checksSlice";
 import { ICheck } from "../../../types/checkTypes";
+import checkReducer from "./checksSlice";
 
 const initialState: ICheck[] = [];
 
@@ -63,6 +64,33 @@ describe("Given the createCheck function", () => {
       const newState = checkReducer(initialState, action);
 
       expect(newState).toEqual(expectedState);
+    });
+  });
+  describe("When its invoked with a edit action with a two notes as a initial state and a edited note", () => {
+    test("Then it should edit the note and change its title, content and category", () => {
+      const editedCheck = {
+        title: "edited check",
+        description: "hola",
+        times: 1,
+        owner: "rocky",
+        id: "1",
+        date: new Date().toISOString().split("T")[0],
+        image: "",
+        imageBackup: "",
+      };
+
+      const action = editCheckActionCreator(editedCheck);
+
+      const initialState = mockListChecks;
+
+      const allChecks = checkReducer(initialState, action);
+
+      expect(allChecks[0]).toHaveProperty("title", editedCheck.title);
+      expect(allChecks[0]).toHaveProperty(
+        "description",
+        editedCheck.description
+      );
+      expect(allChecks[0]).toHaveProperty("times", editedCheck.times);
     });
   });
 });
