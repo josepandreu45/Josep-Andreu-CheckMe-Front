@@ -1,8 +1,9 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import Check from "../../components/Check/Check";
 import Footer from "../../components/Footer/Footer";
-import { useAppSelector } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { loadChecksThunk } from "../../redux/thunks/checkThunks/checkThunks";
 import { ICheck } from "../../types/checkTypes";
 
 const FilterPageComponent = styled.div`
@@ -42,6 +43,11 @@ const FilterPage = (): JSX.Element => {
   const blankFields = {
     calendarDate: "",
   };
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadChecksThunk());
+  }, [dispatch]);
 
   const Allchecks: ICheck[] = useAppSelector((state) => state.checks);
 
@@ -49,8 +55,11 @@ const FilterPage = (): JSX.Element => {
   const [checks, setChecks] = useState(Allchecks);
 
   const filter = () => {
-    setChecks(checks.filter((check) => check.date === formDate.calendarDate));
-    return checks;
+    setChecks(
+      Allchecks.filter((check) => check.date === formDate.calendarDate)
+    );
+    console.log(Allchecks);
+    console.log(checks);
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -75,10 +84,8 @@ const FilterPage = (): JSX.Element => {
           </button>
         </span>
         <section className="checks">
-          {checks !== Allchecks &&
-            checks.map((check, index) => {
-              return <Check key={index} check={check} />;
-            })}
+          {checks < Allchecks &&
+            checks.map((check) => <Check key={check.id} check={check} />)}
         </section>
       </FilterPageComponent>
       <Footer />
