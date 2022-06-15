@@ -10,7 +10,7 @@ const NewCheckContainer = styled.div`
   overflow: hidden;
   background-color: #f5f8fa;
   align-items: center;
-  color: #2b70e4;
+  color: #023e8a;
   img {
     height: 100%;
     width: 115px;
@@ -20,7 +20,7 @@ const NewCheckContainer = styled.div`
   a {
     margin-right: 30px;
     font-size: 20px;
-    color: #2b70e4;
+    color: #023e8a;
     text-decoration: none;
   }
   @media (min-width: 600px) {
@@ -33,7 +33,7 @@ const NewCheckContainer = styled.div`
     overflow: hidden;
     background-color: #f5f8fa;
     align-items: center;
-    color: #2b70e4;
+    color: #023e8a;
     margin-top: 25px;
 
     img {
@@ -44,7 +44,7 @@ const NewCheckContainer = styled.div`
 
     a {
       margin-top: 100px;
-      color: #2b70e4;
+      color: #023e8a;
       text-decoration: none;
     }
   }

@@ -1,4 +1,7 @@
-import { mockListChecks } from "../../../mocks/mockListChecks";
+import {
+  mockDeleteChecks,
+  mockListChecks,
+} from "../../../mocks/mockListChecks";
 import {
   createCheckActionCreator,
   deleteCheckActionCreator,
@@ -26,19 +29,19 @@ describe("Given the loadChecks function", () => {
 describe("Given the deleteCheck function", () => {
   describe("When invoked with an id to delete", () => {
     test("Then the item will be deleted from the propierties list", () => {
-      const initialState: ICheck[] = mockListChecks;
+      const initialState: ICheck[] = mockDeleteChecks;
 
       const expectedState = [
         {
-          username: mockListChecks[1].username,
-          id: mockListChecks[1].id,
-          title: mockListChecks[1].title,
-          date: mockListChecks[1].date,
-          times: mockListChecks[1].times,
-          image: mockListChecks[1].image,
-          description: mockListChecks[1].description,
-          imageBackup: mockListChecks[1].imageBackup,
-          owner: mockListChecks[1].owner,
+          username: mockDeleteChecks[1].username,
+          id: mockDeleteChecks[1].id,
+          title: mockDeleteChecks[1].title,
+          date: mockDeleteChecks[1].date,
+          times: mockDeleteChecks[1].times,
+          image: mockDeleteChecks[1].image,
+          description: mockDeleteChecks[1].description,
+          imageBackup: mockDeleteChecks[1].imageBackup,
+          owner: mockDeleteChecks[1].owner,
         },
       ];
 
@@ -55,10 +58,10 @@ describe("Given the deleteCheck function", () => {
 describe("Given the createCheck function", () => {
   describe("When its invoked", () => {
     test("Then the item will be create the check", () => {
-      const initialState: ICheck[] = [mockListChecks[0]];
-      const payLoad = mockListChecks[1];
+      const initialState: ICheck[] = [mockDeleteChecks[0]];
+      const payLoad = mockDeleteChecks[1];
 
-      const expectedState = mockListChecks;
+      const expectedState = mockDeleteChecks;
 
       const action = createCheckActionCreator(payLoad);
       const newState = checkReducer(initialState, action);

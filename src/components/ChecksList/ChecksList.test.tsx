@@ -36,9 +36,9 @@ describe("Given a ChecksList component", () => {
       expect(receivedSecondTitle).toBeInTheDocument();
     });
   });
-  describe("When the navlink anchor is clicked", () => {
-    test("Then a toTop function will be called", () => {
-      const action = (window.scrollTo = jest.fn());
+  describe("When the buttons of pages are clicked", () => {
+    test("Then a next and previous functions will be called", () => {
+      const next = (window.scrollTo = jest.fn());
 
       const checksMockSlice = createSlice({
         name: "checks",
@@ -57,9 +57,10 @@ describe("Given a ChecksList component", () => {
         </Provider>
       );
 
-      const button = screen.getAllByRole("button");
-      userEvent.click(button[7]);
-      expect(action).toHaveBeenCalled();
+      const buttonNext = screen.getByText("Next");
+      userEvent.click(buttonNext);
+
+      expect(next).toHaveBeenCalled();
     });
   });
 });

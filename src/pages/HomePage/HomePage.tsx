@@ -8,7 +8,7 @@ const HomePageContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   main {
-    background-color: #2b70e4;
+    background-color: #023e8a;
     min-height: calc(100vh - 70px);
     width: 100%;
     display: flex;
@@ -31,9 +31,9 @@ const HomePageContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #2b70e4;
+    background-color: #023e8a;
     main {
-      background-color: #2b70e4;
+      background-color: #023e8a;
       height: 100%;
       width: 100%;
       display: flex;

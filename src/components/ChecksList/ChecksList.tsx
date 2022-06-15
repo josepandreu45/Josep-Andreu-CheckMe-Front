@@ -29,6 +29,26 @@ const ChecksList = (): JSX.Element => {
     setCurrentPage(Allchecks.slice(index, index + 5));
   }, [index, Allchecks]);
 
+  const previous = () => {
+    if (index >= 5) {
+      setIndex(index - 5);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const next = () => {
+    if (index < Allchecks.length - 5) {
+      setIndex(index + 5);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   if (Allchecks.length === 0) {
     return (
       <ChecksListContainer>
@@ -44,32 +64,8 @@ const ChecksList = (): JSX.Element => {
           return <Check key={index} check={check} />;
         })}
         <section className="page">
-          <button
-            onClick={() => {
-              if (index >= 5) {
-                setIndex(index - 5);
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                });
-              }
-            }}
-          >
-            Previous
-          </button>
-          <button
-            onClick={() => {
-              if (index < Allchecks.length - 5) {
-                setIndex(index + 5);
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                });
-              }
-            }}
-          >
-            Next
-          </button>
+          <button onClick={previous}>Previous</button>
+          <button onClick={next}>Next</button>
         </section>
       </ChecksListContainer>
     </>

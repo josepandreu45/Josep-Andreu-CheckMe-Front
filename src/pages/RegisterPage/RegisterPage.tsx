@@ -8,7 +8,7 @@ const RegisterPageContainer = styled.div`
   justify-content: start;
   gap: 50px;
   align-items: center;
-  background-color: #2b70e4;
+  background-color: #023e8a;
 
   img {
     margin-top: 35px;

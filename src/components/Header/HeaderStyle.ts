@@ -6,7 +6,7 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  background-color: #2b70e4;
+  background-color: #023e8a;
   min-width: 100%;
   height: 125px;
   border-bottom: 1px solid #f5f8fa;
@@ -38,7 +38,7 @@ const HeaderContainer = styled.header`
     border: 1px solid #f5f8fa;
     border-radius: 15px;
     background-color: #f5f8fa;
-    color: #2b70e4;
+    color: #023e8a;
     cursor: pointer;
   }
   .user {

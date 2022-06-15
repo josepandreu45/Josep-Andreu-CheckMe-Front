@@ -18,7 +18,7 @@ const ChecksListContainer = styled.div`
     button {
       border: none;
       width: 70px;
-      background-color: #2b70e4;
+      background-color: #023e8a;
       color: #f5f8fa;
       font-size: 18px;
       cursor: pointer;
@@ -44,7 +44,7 @@ const ChecksListContainer = styled.div`
     button {
       border: none;
       width: 70px;
-      background-color: #2b70e4;
+      background-color: #023e8a;
       color: #f5f8fa;
       font-size: 18px;
       cursor: pointer;

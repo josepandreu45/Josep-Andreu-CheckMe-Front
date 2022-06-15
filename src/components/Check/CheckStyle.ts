@@ -9,7 +9,7 @@ const CheckContainer = styled.div`
   overflow: hidden;
   background-color: #f5f8fa;
   align-items: center;
-  color: #2b70e4;
+  color: #023e8a;
 
   h2 {
     margin: 0px;
@@ -35,7 +35,7 @@ const CheckContainer = styled.div`
 
   .detail {
     font-size: 16px;
-    color: #2b70e4;
+    color: #023e8a;
     cursor: pointer;
   }
   .info {
@@ -69,7 +69,7 @@ const CheckContainer = styled.div`
     font-size: 20px;
     color: #f5f8fa;
     border-radius: 50%;
-    background-color: #2b70e4;
+    background-color: #023e8a;
     width: 30px;
     height: 30px;
     text-align: center;
@@ -85,7 +85,7 @@ const CheckContainer = styled.div`
     overflow: hidden;
     background-color: #f5f8fa;
     align-items: center;
-    color: #2b70e4;
+    color: #023e8a;
     margin-top: 25px;
 
     h2 {
