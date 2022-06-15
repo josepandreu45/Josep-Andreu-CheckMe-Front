@@ -100,13 +100,15 @@ const CreateForm = (): JSX.Element => {
           autoComplete="off"
         />
         <label htmlFor="image">Image</label>
-        <input
-          className="image"
-          id="image"
-          type="file"
-          onChange={uploadImage}
-          autoComplete="off"
-        />
+        <section className="file">
+          <input
+            className="image"
+            id="image"
+            type="file"
+            onChange={uploadImage}
+            autoComplete="off"
+          />
+        </section>
         <button type="submit" className="form-button">
           {location.pathname === "/add" ? "CREATE CHECK" : "EDIT CHECK"}
         </button>

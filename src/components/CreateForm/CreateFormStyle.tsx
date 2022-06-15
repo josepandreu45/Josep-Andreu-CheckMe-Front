@@ -64,6 +64,7 @@ const CreateFormContainer = styled.div`
   }
   .image {
     border: none;
+    color: #023e8a;
   }
 `;
 
