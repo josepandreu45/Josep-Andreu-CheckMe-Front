@@ -1,12 +1,14 @@
 import {
   createCheckThunk,
   deleteCheckThunk,
+  editCheckThunk,
   getOneCheckThunk,
   loadChecksThunk,
 } from "./checkThunks";
 import { server } from "../../../mocks/server";
 import {
   deleteCheckActionCreator,
+  editCheckActionCreator,
   loadChecksActionCreator,
 } from "../../features/checksSlice/checksSlice";
 import {
@@ -104,6 +106,31 @@ describe("Given a loadOneCheckThunk", () => {
       const action = loadOneCheckActionCreator(mockListChecks[0]);
       const thunk = getOneCheckThunk(mockListChecks[0].id);
 
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
+describe("Given the editNoteThunk function", () => {
+  describe("When it's called with an id to edit and a note", () => {
+    test("Then it should call dispatch with the new note edited received from the axios request", async () => {
+      const formCheckMock = {
+        title: "hola",
+        description: "hola hola",
+        times: 4,
+        image: "",
+        imageBackup: "",
+      };
+
+      const dispatch = jest.fn();
+      const action = editCheckActionCreator(mockListCheckCreate);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.put = jest.fn().mockResolvedValue({ data: mockListCheckCreate });
+
+      const thunk = editCheckThunk(mockListCheckCreate.id, formCheckMock);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(action);
