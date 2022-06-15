@@ -58,8 +58,6 @@ const FilterPage = (): JSX.Element => {
     setChecks(
       Allchecks.filter((check) => check.date === formDate.calendarDate)
     );
-    console.log(Allchecks);
-    console.log(checks);
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
