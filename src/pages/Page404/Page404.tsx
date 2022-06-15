@@ -9,10 +9,10 @@ const Page404Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-color: #2b70e4;
+  background-color: #023e8a;
 
   .error {
-    color: #2b70e4;
+    color: #023e8a;
     height: 100px;
     width: 300px;
     display: flex;

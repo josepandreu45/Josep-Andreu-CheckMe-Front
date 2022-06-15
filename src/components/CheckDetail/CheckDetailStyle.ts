@@ -10,7 +10,7 @@ const CheckDetailContainer = styled.div`
   overflow: hidden;
   background-color: #f5f8fa;
   align-items: center;
-  color: #2b70e4;
+  color: #023e8a;
   margin-top: 15px;
 
   h2 {
@@ -60,7 +60,7 @@ const CheckDetailContainer = styled.div`
     overflow: hidden;
     background-color: #f5f8fa;
     align-items: center;
-    color: #2b70e4;
+    color: #023e8a;
     margin-top: 25px;
 
     h2 {

@@ -11,7 +11,7 @@ const RegisterFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #2b70e4;
+    border: 2px solid #023e8a;
     border-radius: 15px;
     height: 390px;
     width: 250px;
@@ -23,14 +23,14 @@ const RegisterFormContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 15px;
-    color: #2b70e4;
+    color: #023e8a;
   }
 
   input {
     height: 30px;
     margin-top: 15px;
     width: 202px;
-    border: 1px solid #2b70e4;
+    border: 1px solid #023e8a;
   }
 
   .form-button {
@@ -38,7 +38,7 @@ const RegisterFormContainer = styled.div`
     border: none;
     font-size: 0.8em;
     font-weight: bold;
-    background-color: #2b70e4;
+    background-color: #023e8a;
     color: #f5f8fa;
     cursor: pointer;
     width: 209px;
@@ -47,7 +47,7 @@ const RegisterFormContainer = styled.div`
   }
   a {
     text-decoration: none;
-    color: #2b70e4;
+    color: #023e8a;
   }
 `;
 
