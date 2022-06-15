@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { mockListChecks } from "../../mocks/mockListChecks";
@@ -33,6 +34,32 @@ describe("Given a ChecksList component", () => {
 
       expect(receivedFirstTitle).toBeInTheDocument();
       expect(receivedSecondTitle).toBeInTheDocument();
+    });
+  });
+  describe("When the navlink anchor is clicked", () => {
+    test("Then a toTop function will be called", () => {
+      const action = (window.scrollTo = jest.fn());
+
+      const checksMockSlice = createSlice({
+        name: "checks",
+        initialState: mockListChecks,
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { checks: checksMockSlice.reducer },
+      });
+
+      render(
+        <Provider store={mockStore}>
+          <BrowserRouter>
+            <ChecksList />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const button = screen.getAllByRole("button");
+      userEvent.click(button[7]);
+      expect(action).toHaveBeenCalled();
     });
   });
 });
