@@ -40,7 +40,6 @@ const CheckContainer = styled.div`
   }
   .info {
     display: flex;
-
     flex-direction: column;
     justify-content: center;
     text-align: center;
@@ -62,6 +61,7 @@ const CheckContainer = styled.div`
     gap: 3px;
     font-size: 18px;
   }
+
   .times button {
     display: flex;
     justify-content: center;
