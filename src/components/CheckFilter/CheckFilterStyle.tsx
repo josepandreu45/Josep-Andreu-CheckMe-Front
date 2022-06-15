@@ -14,11 +14,20 @@ const CheckFilterContainer = styled.div`
     height: 36px;
     width: 200px;
     text-align: center;
+    color: #023e8a;
+    border-radius: 5px;
+    background-color: #f5f8fa;
+    border: none;
   }
   button {
-    height: 40px;
+    height: 36px;
     width: 100px;
     text-align: center;
+    color: #023e8a;
+    border: none;
+    border-radius: 5px;
+    background-color: #f5f8fa;
+    cursor: pointer;
   }
   .filter {
     display: flex;
