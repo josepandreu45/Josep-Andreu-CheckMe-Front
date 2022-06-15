@@ -1,9 +1,9 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store/store";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 jest.mock("jwt-decode", () => () => ({
   id: "1",
@@ -19,21 +19,26 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("Given an App component", () => {
-  describe("When it's rendered and a user is not logged", () => {
-    test("Then it should render a text  'Register'", () => {
-      const expectedText = "Username";
+  describe("When it's rendered and there is an user logged", () => {
+    test("Then it should call navigate with the route '/home'", () => {
+      const userMockSlice = createSlice({
+        name: "user",
+        initialState: { username: "josep", logged: true },
+        reducers: {},
+      });
+      const mockStore = configureStore({
+        reducer: { user: userMockSlice.reducer },
+      });
 
       render(
-        <Provider store={store}>
+        <Provider store={mockStore}>
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </Provider>
       );
 
-      const expectedResult = screen.getByText(expectedText);
-
-      expect(expectedResult).toBeInTheDocument();
+      expect(mockUseNavigate).toHaveBeenCalledWith("/home");
     });
   });
 });

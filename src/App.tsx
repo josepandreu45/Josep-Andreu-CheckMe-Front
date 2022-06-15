@@ -5,31 +5,27 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { loginActionCreator } from "./redux/features/userSlice/userSlice";
-import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
+import { useAppDispatch } from "./redux/hooks/hooks";
 import { UserInfo } from "../src/types/userTypes";
 import Page404 from "./pages/Page404/Page404";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CreatePage from "./pages/CreatePage/CreatePage";
 import AccesControlLogged from "./components/AccesControl/AccesControlLogged";
-import { useEffect } from "react";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import EditPage from "./pages/EditPage/EditPage";
 import Header from "./components/Header/Header";
 import FilterPage from "./pages/FilterPage/FilterPage";
 
 function App() {
-  const { logged } = useAppSelector((state) => state.user);
-
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token || logged) {
-      const userData: UserInfo = jwtDecode(token as string);
-      dispatch(loginActionCreator(userData));
-    }
-  }, [dispatch, logged]);
+  const token = localStorage.getItem("token");
+  try {
+    const userData: UserInfo = jwtDecode(token as string);
+    dispatch(loginActionCreator(userData));
+  } catch {}
+
   return (
     <>
       <Routes>
